@@ -46,39 +46,43 @@ npm run build
 
 ---
 
-## 🌐 Deploying to Cloudflare Pages
+## 🌐 Deploying to Vercel (Production Domain: https://keyra.in)
 
-To deploy this Next.js repository on **Cloudflare Pages**:
+The application is architected for native Next.js 15 hosting on **Vercel** with GitHub integration.
 
 ### Step 1: Connect GitHub Repository
-1. Log in to your [Cloudflare Dashboard](https://dash.cloudflare.com/).
-2. Navigate to **Workers & Pages** > **Create application** > **Pages** > **Connect to Git**.
-3. Select the repository: `Rentofyy/Keyra_web`.
+1. Log in to your [Vercel Dashboard](https://vercel.com/dashboard).
+2. Click **Add New…** > **Project** and import **`Rentofyy/Keyra_web`**.
+3. Framework Preset: **Next.js** (auto-detected).
+4. Root Directory: `./` (default).
+5. Build Command: `npm run build` (default).
 
-### Step 2: Build & Deployment Settings
-Configure the build settings as follows:
+### Step 2: Environment Variables
+Add the required environment variables under **Project Settings** > **Environment Variables**:
 
-| Setting | Value |
-|---|---|
-| **Framework preset** | `Next.js` |
-| **Build command** | `npm run build` |
-| **Build output directory** | `.next` (or default for Cloudflare Next.js preset) |
-| **Root directory** | `/` |
+| Variable Name | Environment | Value | Description |
+|---|---|---|---|
+| `NODE_VERSION` | Production, Preview, Dev | `20.x` | Node.js LTS runtime |
+| `NEXT_PUBLIC_APP_NAME` | Production, Preview, Dev | `KEYRA - Verified Homes` | Brand title |
+| `NEXT_PUBLIC_APP_URL` | Production | `https://keyra.in` | Canonical site URL |
+| `NEXT_PUBLIC_APP_URL` | Preview | `https://${VERCEL_URL}` | Preview deployment URL |
+| `NEXT_PUBLIC_API_URL` | Production, Preview, Dev | `https://keyra-backend-803170070973.asia-south1.run.app/api/v1` | Spring Boot Cloud Run backend |
+| `BACKEND_API_URL` | Production, Preview | `https://keyra-backend-803170070973.asia-south1.run.app/api/v1` | Server-side proxy base URL |
+| `NEXT_PUBLIC_RAZORPAY_KEY_ID` | Production | `rzp_live_...` (or test: `rzp_test_TuuEAa58npPSlK`) | Razorpay public key ID |
+| `NEXT_PUBLIC_GOOGLE_CLIENT_ID` | Production, Preview, Dev | `803170070973-b8mc27tpbqim5dn2qacf2g8s9tv76gik.apps.googleusercontent.com` | Google OAuth Web Client ID |
+| `NEXT_PUBLIC_GOOGLE_MAPS_API_KEY` | Production, Preview, Dev | *(Your Maps API Key)* | Google Maps JS API (Optional) |
 
-### Step 3: Environment Variables
-Add the following Environment Variables in the Cloudflare Pages settings:
+### Step 3: Production Domain Configuration (`keyra.in`)
+1. In Vercel Project Settings > **Domains**, add `keyra.in` (Primary) and `www.keyra.in` (Redirect to `keyra.in`).
+2. Add DNS records at your domain registrar:
+   - **Apex (`@`)**: `A` record pointing to `76.76.21.21`
+   - **Subdomain (`www`)**: `CNAME` record pointing to `cname.vercel-dns.com.`
+3. Vercel automatically issues and renews global SSL certificates.
 
-| Variable Name | Value | Description |
-|---|---|---|
-| `NODE_VERSION` | `20` | Ensures compatible Node.js LTS runtime |
-| `NEXT_PUBLIC_APP_NAME` | `KEYRA - Verified Homes` | Brand title |
-| `NEXT_PUBLIC_APP_URL` | `https://keyra-web.pages.dev` (or custom domain) | Base site URL |
-| `NEXT_PUBLIC_API_URL` | `https://keyra-backend-803170070973.asia-south1.run.app/api/v1` | Production backend API |
-| `NEXT_PUBLIC_RAZORPAY_KEY_ID` | `rzp_test_TuuEAa58npPSlK` | Razorpay Key ID |
-| `NEXT_PUBLIC_GOOGLE_CLIENT_ID` | `803170070973-b8mc27tpbqim5dn2qacf2g8s9tv76gik.apps.googleusercontent.com` | Google OAuth Client ID |
-| `NEXT_PUBLIC_GOOGLE_MAPS_API_KEY` | *(Your Google Maps API key)* | Optional for Maps view |
-
-Click **Save and Deploy**. Cloudflare will build and serve the application globally with automatic SSL and edge caching.
+Detailed documentation:
+- 📖 [Vercel Deployment Guide](docs/VERCEL_DEPLOYMENT_GUIDE.md)
+- 📋 [Environment Variables Specification](docs/VERCEL_ENVIRONMENT_VARIABLES.md)
+- 📝 [Migration & Validation Report](docs/VERCEL_MIGRATION_REPORT.md)
 
 ---
 
