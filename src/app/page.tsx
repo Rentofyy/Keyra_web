@@ -17,7 +17,6 @@ import {
   Search,
   MapPin,
   ShieldCheck,
-  Award,
   ArrowRight,
   Clock,
   Sparkles,
@@ -63,28 +62,80 @@ export default function HomePage() {
   return (
     <div className="flex flex-col">
       {/* 1. Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-[#0F1E36] via-[#142644] to-[#0F1E36] text-white py-16 sm:py-24">
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#0F1E36] via-[#142644] to-[#0F1E36] text-white py-14 sm:py-20 lg:py-24">
         {/* Decorative Grid Overlay */}
         <div className="absolute inset-0 bg-[radial-gradient(#C5A059_1px,transparent_1px)] [background-size:24px_24px] opacity-10 pointer-events-none" />
 
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
-          {/* Top Pill */}
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#C5A059]/30 bg-white/5 px-4 py-1.5 text-xs font-semibold text-[#C5A059] backdrop-blur-md mb-6">
-            <Sparkles className="h-3.5 w-3.5" />
-            <span>Zero Brokerage • Pune West Micro-Markets</span>
+          {/* Eyebrow Pill */}
+          <div className="inline-flex items-center gap-2 rounded-full border border-[#C5A059]/40 bg-[#C5A059]/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-[#C5A059] backdrop-blur-md mb-6 shadow-xs">
+            <Sparkles className="h-3.5 w-3.5 text-[#C5A059]" />
+            <span>THE SMARTER WAY TO RENT IN PUNE</span>
           </div>
 
           {/* Main Headline */}
           <h1 className="font-heading text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight max-w-4xl mx-auto leading-tight sm:leading-none">
-            Verified Homes. Direct Owners.{" "}
-            <span className="text-transparent bg-clip-text bg-gradient-to-r from-[#C5A059] to-[#E5A93C]">
-              Zero Brokerage.
-            </span>
+            <span className="text-white block">You Find the Home.</span>
+            <span className="text-[#C5A059] block mt-1.5 sm:mt-2.5">We Handle the Rest.</span>
           </h1>
 
-          <p className="mt-4 sm:mt-6 text-sm sm:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed">
-            Discover physically inspected rental flats, coliving beds, and PG spaces across Baner, Wakad, Hinjewadi, and Balewadi.
+          {/* Subtitle / Description */}
+          <p className="mt-4 sm:mt-6 text-sm sm:text-base md:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed">
+            Owner-verified properties. Personally guided home tours. Complete rental assistance from your first visit to move-in.
           </p>
+
+          {/* 3 Feature Cards */}
+          <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 max-w-3xl mx-auto text-left">
+            {/* Feature 1 */}
+            <div className="group rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm transition-all duration-200 hover:border-[#C5A059]/50 hover:bg-white/10 hover:shadow-lg hover:shadow-black/20">
+              <div className="flex items-center gap-2.5 mb-1.5">
+                <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#C5A059]/20 text-[#C5A059] group-hover:scale-105 transition-transform shrink-0">
+                  <ShieldCheck className="h-4 w-4" />
+                </div>
+                <h3 className="font-heading text-sm font-bold text-white">Verified Owners</h3>
+              </div>
+              <p className="text-xs text-slate-300 pl-10.5">Proof before listing.</p>
+            </div>
+
+            {/* Feature 2 */}
+            <div className="group rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm transition-all duration-200 hover:border-[#C5A059]/50 hover:bg-white/10 hover:shadow-lg hover:shadow-black/20">
+              <div className="flex items-center gap-2.5 mb-1.5">
+                <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#C5A059]/20 text-[#C5A059] group-hover:scale-105 transition-transform shrink-0">
+                  <Users className="h-4 w-4" />
+                </div>
+                <h3 className="font-heading text-sm font-bold text-white">Guided Tours</h3>
+              </div>
+              <p className="text-xs text-slate-300 pl-10.5">KEYRA executives.</p>
+            </div>
+
+            {/* Feature 3 */}
+            <div className="group rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm transition-all duration-200 hover:border-[#C5A059]/50 hover:bg-white/10 hover:shadow-lg hover:shadow-black/20">
+              <div className="flex items-center gap-2.5 mb-1.5">
+                <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#C5A059]/20 text-[#C5A059] group-hover:scale-105 transition-transform shrink-0">
+                  <Key className="h-4 w-4" />
+                </div>
+                <h3 className="font-heading text-sm font-bold text-white">End-to-End</h3>
+              </div>
+              <p className="text-xs text-slate-300 pl-10.5">Rental assistance.</p>
+            </div>
+          </div>
+
+          {/* Hero CTA & Supporting Text */}
+          <div className="mt-8 flex flex-col items-center justify-center gap-2">
+            <Link href="/properties">
+              <Button
+                variant="gold"
+                size="lg"
+                className="font-extrabold text-sm sm:text-base px-8 py-3.5 rounded-full shadow-gold hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center gap-2"
+              >
+                <span>Find Your Next Home</span>
+                <ArrowRight className="h-4 w-4" />
+              </Button>
+            </Link>
+            <p className="text-[11px] sm:text-xs font-bold tracking-widest text-[#C5A059]/90 uppercase mt-1">
+              A BETTER RENTAL JOURNEY STARTS HERE
+            </p>
+          </div>
 
           {/* Tabbed Search Container */}
           <div className="mt-10 mx-auto max-w-4xl rounded-3xl bg-white p-3 sm:p-4 shadow-elevated text-slate-900 border border-slate-100">
@@ -261,7 +312,154 @@ export default function HomePage() {
         <PropertyGrid properties={properties || []} isLoading={isLoading} />
       </section>
 
-      {/* 4. Owner Callout Section */}
+      {/* 4. Rental Assistance Section (New) */}
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#0F1E36] via-[#142644] to-[#0F1E36] text-white py-16 sm:py-20 border-t border-slate-800">
+        <div className="absolute inset-0 bg-[radial-gradient(#C5A059_1px,transparent_1px)] [background-size:24px_24px] opacity-10 pointer-events-none" />
+        <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
+          {/* Eyebrow */}
+          <div className="inline-flex items-center gap-2 rounded-full border border-[#C5A059]/40 bg-[#C5A059]/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-[#C5A059] mb-4">
+            <Sparkles className="h-3.5 w-3.5 text-[#C5A059]" />
+            <span>A NEW ERA OF RENTING</span>
+          </div>
+
+          {/* Heading */}
+          <h2 className="font-heading text-3xl sm:text-4xl lg:text-5xl font-extrabold tracking-tight text-white leading-tight">
+            You Choose the Home. <br className="hidden sm:inline" />
+            <span className="text-[#C5A059]">We Handle the Rest.</span>
+          </h2>
+
+          {/* Additional Heading */}
+          <p className="font-heading text-xl sm:text-2xl font-bold text-slate-100 mt-3">
+            No One-Month Brokerage.
+          </p>
+
+          {/* Description */}
+          <p className="mt-3 text-sm sm:text-base text-slate-300 max-w-2xl mx-auto leading-relaxed">
+            Owner-verified properties. Personally guided home tours. Complete rental assistance.
+          </p>
+
+          {/* 3 Benefits Grid */}
+          <div className="mt-12 grid grid-cols-1 md:grid-cols-3 gap-6 text-left max-w-5xl mx-auto">
+            {/* Benefit 1 */}
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm transition-all duration-200 hover:border-[#C5A059]/50 hover:bg-white/10 hover:shadow-xl">
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#C5A059]/20 text-[#C5A059] mb-4">
+                <span className="font-heading text-xl font-extrabold">₹0</span>
+              </div>
+              <h3 className="font-heading text-lg font-bold text-white mb-2">
+                No One-Month Brokerage.
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                Zero arbitrary broker cuts. Lock your ideal home with flat, transparent pricing and zero percentage commission.
+              </p>
+            </div>
+
+            {/* Benefit 2 */}
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm transition-all duration-200 hover:border-[#C5A059]/50 hover:bg-white/10 hover:shadow-xl">
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#C5A059]/20 text-[#C5A059] mb-4">
+                <Users className="h-6 w-6 text-[#C5A059]" />
+              </div>
+              <h3 className="font-heading text-lg font-bold text-white mb-2">
+                Personally Guided Tours.
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                A dedicated KEYRA executive coordinates appointments, opens doors, and answers your society questions on-site.
+              </p>
+            </div>
+
+            {/* Benefit 3 */}
+            <div className="rounded-2xl border border-white/10 bg-white/5 p-6 backdrop-blur-sm transition-all duration-200 hover:border-[#C5A059]/50 hover:bg-white/10 hover:shadow-xl">
+              <div className="flex h-12 w-12 items-center justify-center rounded-2xl bg-[#C5A059]/20 text-[#C5A059] mb-4">
+                <ShieldCheck className="h-6 w-6 text-[#C5A059]" />
+              </div>
+              <h3 className="font-heading text-lg font-bold text-white mb-2">
+                Complete Rental Assistance.
+              </h3>
+              <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+                From owner rent negotiation to move-in checklist validation and post-move issue resolution, you never rent alone.
+              </p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 5. Twelve-Month Support Section (New) */}
+      <section className="py-16 sm:py-20 bg-gradient-to-b from-[#FDFBF7] to-white border-b border-slate-200">
+        <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
+          <div className="rounded-3xl border border-[#C5A059]/30 bg-white p-8 sm:p-12 md:p-16 shadow-xl relative overflow-hidden">
+            {/* Decorative Top Accent Line */}
+            <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-1.5 bg-gradient-to-r from-transparent via-[#C5A059] to-transparent opacity-80" />
+
+            <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
+              {/* Left Column: Prominent 12 Months Highlight */}
+              <div className="lg:col-span-5 flex flex-col items-center lg:items-start text-center lg:text-left">
+                <div className="inline-flex items-center gap-2 rounded-full bg-[#0F1E36] text-[#C5A059] px-4 py-1.5 text-xs font-bold uppercase tracking-wider mb-4 border border-[#C5A059]/40 shadow-xs">
+                  <Clock className="h-3.5 w-3.5" />
+                  <span>Tenancy Assurance</span>
+                </div>
+
+                <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#0F1E36] tracking-tight leading-tight">
+                  <span className="text-[#C5A059] text-5xl sm:text-6xl md:text-7xl font-black block tracking-normal">
+                    12 Months.
+                  </span>
+                  We&apos;re With You.
+                </h2>
+
+                <p className="mt-4 text-sm sm:text-base text-slate-600 leading-relaxed max-w-md">
+                  From move-in to unexpected rental challenges and re-rental assistance, KEYRA stays by your side.
+                </p>
+
+                <div className="mt-6 flex items-start gap-2.5 text-xs text-slate-500 font-medium bg-slate-50 border border-slate-200 rounded-xl p-3.5 max-w-md text-left">
+                  <ShieldCheck className="h-4 w-4 text-[#C5A059] shrink-0 mt-0.5" />
+                  <span>
+                    Assistance provided under active KEYRA Tenancy terms and standard service scope.
+                  </span>
+                </div>
+              </div>
+
+              {/* Right Column: 3 Pillars */}
+              <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-4">
+                <div className="rounded-2xl border border-slate-200 bg-slate-50/70 p-5 hover:border-[#C5A059]/50 hover:bg-white hover:shadow-md transition-all">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#0F1E36] text-[#C5A059] mb-3">
+                    <Key className="h-5 w-5" />
+                  </div>
+                  <h4 className="font-heading text-sm font-bold text-[#0F1E36] mb-1">
+                    Move-In Handover
+                  </h4>
+                  <p className="text-xs text-slate-600 leading-relaxed">
+                    Physical key exchange, baseline utility meter records, and move-in inspection verification.
+                  </p>
+                </div>
+
+                <div className="rounded-2xl border border-slate-200 bg-slate-50/70 p-5 hover:border-[#C5A059]/50 hover:bg-white hover:shadow-md transition-all">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#0F1E36] text-[#C5A059] mb-3">
+                    <Sparkles className="h-5 w-5" />
+                  </div>
+                  <h4 className="font-heading text-sm font-bold text-[#0F1E36] mb-1">
+                    Rental Challenges
+                  </h4>
+                  <p className="text-xs text-slate-600 leading-relaxed">
+                    Single-point coordination for unresolved plumbing, electrical, and structural upkeep with the owner.
+                  </p>
+                </div>
+
+                <div className="rounded-2xl border border-slate-200 bg-slate-50/70 p-5 hover:border-[#C5A059]/50 hover:bg-white hover:shadow-md transition-all">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#0F1E36] text-[#C5A059] mb-3">
+                    <CheckCircle className="h-5 w-5" />
+                  </div>
+                  <h4 className="font-heading text-sm font-bold text-[#0F1E36] mb-1">
+                    Re-Rental Support
+                  </h4>
+                  <p className="text-xs text-slate-600 leading-relaxed">
+                    Fast-track matching and priority transition support whenever you decide to relocate across Pune.
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 6. Owner Callout Section */}
       <section className="bg-gradient-to-r from-[#0F1E36] to-[#1A2F50] text-white py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
@@ -345,6 +543,24 @@ export default function HomePage() {
               </div>
             </div>
           </div>
+        </div>
+      </section>
+
+      {/* 7. Brand Statement Section (New - Before Footer) */}
+      <section className="bg-gradient-to-b from-[#142644] to-[#0F1E36] text-white py-16 sm:py-24 border-t border-slate-800 text-center relative overflow-hidden">
+        <div className="absolute inset-0 bg-[radial-gradient(#C5A059_1px,transparent_1px)] [background-size:24px_24px] opacity-10 pointer-events-none" />
+        <div className="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
+          <div className="inline-flex items-center gap-2 rounded-full border border-[#C5A059]/40 bg-[#C5A059]/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-[#C5A059] mb-6">
+            <Sparkles className="h-3.5 w-3.5 text-[#C5A059]" />
+            <span>THE KEYRA STANDARD</span>
+          </div>
+
+          <blockquote className="font-heading text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-snug sm:leading-tight">
+            <span className="text-slate-200 block">Other Platforms Share Contacts.</span>
+            <span className="text-[#C5A059] block mt-2 sm:mt-3">KEYRA Takes Responsibility.</span>
+          </blockquote>
+
+          <div className="mt-8 mx-auto w-24 h-1 bg-gradient-to-r from-transparent via-[#C5A059] to-transparent rounded-full" />
         </div>
       </section>
     </div>
