@@ -8,7 +8,7 @@ import { apiClient } from "@/lib/api-client";
 import { useAuthStore } from "@/stores/auth-store";
 import { PropertyDetail } from "@/types/property";
 import { normalizeProperty, formatBhk, deriveLocality, getPropertyPhotos } from "@/lib/property-helper";
-import { formatRent, formatCurrency } from "@/lib/utils";
+import { formatRent, formatCurrency, loadRazorpayScript } from "@/lib/utils";
 import { Button } from "@/components/ui/button";
 import {
   Calendar,
@@ -25,7 +25,7 @@ export default function PropertyVisitPage() {
   const router = useRouter();
   const propertyId = params?.id as string;
 
-  const { isAuthenticated, openAuthModal } = useAuthStore();
+  const { isAuthenticated, openAuthModal, user } = useAuthStore();
   const [visitDate, setVisitDate] = useState(() => {
     const d = new Date();
     d.setDate(d.getDate() + 1);
@@ -56,18 +56,77 @@ export default function PropertyVisitPage() {
 
     setIsSubmitting(true);
     try {
-      await apiClient.post("/tenant/visits", {
-        propertyId,
-        visitDate,
-        timeSlot: visitTimeSlot,
+      const isLoaded = await loadRazorpayScript();
+      if (!isLoaded) {
+        alert("Unable to load Razorpay payment gateway. Please check your internet connection.");
+        setIsSubmitting(false);
+        return;
+      }
+
+      const envKey = process.env.NEXT_PUBLIC_RAZORPAY_KEY_ID;
+      const razorpayKey =
+        envKey && !envKey.includes("placeholder")
+          ? envKey
+          : "rzp_test_TuuEAa58npPSlK";
+
+      const logoUrl =
+        typeof window !== "undefined"
+          ? `${window.location.origin}/images/keyra-logo.png`
+          : undefined;
+
+      const options: any = {
+        key: razorpayKey,
+        amount: 3900, // ₹39 in paise
+        currency: "INR",
+        name: "KEYRA",
+        description: `Guided Tour Visit Fee (₹39) - ${property?.societyName || property?.title || "Property"}`,
+        image: logoUrl,
+        prefill: {
+          name: user?.fullName || "Valued Customer",
+          contact: user?.phoneNumber || "",
+          email: user?.email || "customer@keyra.in",
+        },
+        theme: {
+          color: "#060C18",
+        },
+        handler: async (response: {
+          razorpay_payment_id: string;
+          razorpay_order_id?: string;
+          razorpay_signature?: string;
+        }) => {
+          setIsSubmitting(true);
+          try {
+            await apiClient.post("/tenant/visits", {
+              propertyId,
+              visitDate,
+              timeSlot: visitTimeSlot,
+              paymentId: response.razorpay_payment_id,
+            });
+            setIsSuccess(true);
+          } catch (err: any) {
+            alert(
+              err.response?.data?.message ||
+                "Payment was successful, but visit submission failed. Please contact support."
+            );
+          } finally {
+            setIsSubmitting(false);
+          }
+        },
+        modal: {
+          ondismiss: () => {
+            setIsSubmitting(false);
+          },
+        },
+      };
+
+      const rzp = new (window as any).Razorpay(options);
+      rzp.on("payment.failed", (response: any) => {
+        alert(`Payment failed: ${response.error?.description || "Transaction declined"}`);
+        setIsSubmitting(false);
       });
-      setIsSuccess(true);
+      rzp.open();
     } catch (err: any) {
-      alert(
-        err.response?.data?.message ||
-          "Could not schedule visit. Please try again."
-      );
-    } finally {
+      alert("Failed to initiate payment for visit. Please try again.");
       setIsSubmitting(false);
     }
   };
