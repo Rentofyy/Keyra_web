@@ -15,6 +15,7 @@ import {
   normalizeProperty,
 } from "@/lib/property-helper";
 import { PUNE_WEST_LOCALITIES, PUNE_COORDINATES } from "@/lib/constants";
+import { useAuthStore } from "@/stores/auth-store";
 import { Button } from "@/components/ui/button";
 import {
   MapPin,
@@ -52,6 +53,7 @@ const mapOptions = {
 };
 
 export default function PropertyMapPage() {
+  const { isAuthenticated, openAuthModal } = useAuthStore();
   const [selectedLocality, setSelectedLocality] = useState("");
   const [activeProperty, setActiveProperty] = useState<PropertySummary | null>(null);
   const [map, setMap] = useState<google.maps.Map | null>(null);
@@ -224,6 +226,12 @@ export default function PropertyMapPage() {
                     </p>
                     <Link
                       href={`/properties/${activeProperty.id}`}
+                      onClick={(e) => {
+                        if (!isAuthenticated) {
+                          e.preventDefault();
+                          openAuthModal(`/properties/${activeProperty.id}`);
+                        }
+                      }}
                       className="text-[10px] text-[#006A61] font-bold underline mt-1 inline-block"
                     >
                       View Details →
@@ -283,7 +291,15 @@ export default function PropertyMapPage() {
                     {deriveLocality(activeProperty.address, activeProperty.locality)}, Pune West
                   </p>
                 </div>
-                <Link href={`/properties/${activeProperty.id}`}>
+                <Link
+                  href={`/properties/${activeProperty.id}`}
+                  onClick={(e) => {
+                    if (!isAuthenticated) {
+                      e.preventDefault();
+                      openAuthModal(`/properties/${activeProperty.id}`);
+                    }
+                  }}
+                >
                   <Button variant="gold" size="sm" className="h-8 px-2.5 text-xs font-bold">
                     View <ChevronRight className="h-3 w-3 ml-0.5" />
                   </Button>

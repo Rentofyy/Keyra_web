@@ -1,10 +1,11 @@
 import React from "react";
 import { describe, it, expect, vi } from "vitest";
 import "@testing-library/jest-dom/vitest";
-import { render, screen } from "@testing-library/react";
+import { render, screen, fireEvent } from "@testing-library/react";
 import { PropertyCard } from "../property-card";
 import { PropertyGrid } from "../property-grid";
 import { PropertySummary } from "@/types/property";
+import { useAuthStore } from "@/stores/auth-store";
 
 // Mock next/image for Vitest jsdom
 vi.mock("next/image", () => ({
@@ -115,6 +116,38 @@ describe("PropertyCard Component & Safe Null Handling", () => {
     expect(() => render(<PropertyCard property={sparseProperty} />)).not.toThrow();
     expect(screen.getByText("2 BHK")).toBeInTheDocument();
     expect(screen.getByText("₹20k")).toBeInTheDocument();
+  });
+
+  it("intercepts property details click when unauthenticated and opens auth modal with redirect", () => {
+    const openAuthModalSpy = vi.fn();
+    useAuthStore.setState({
+      isAuthenticated: false,
+      openAuthModal: openAuthModalSpy,
+    });
+
+    render(<PropertyCard property={completeProperty} />);
+
+    const detailsLink = screen.getByText(/View Details/i).closest("a");
+    expect(detailsLink).toBeInTheDocument();
+
+    fireEvent.click(detailsLink!);
+    expect(openAuthModalSpy).toHaveBeenCalledWith("/properties/prop-123");
+  });
+
+  it("does not intercept property details click when user is authenticated", () => {
+    const openAuthModalSpy = vi.fn();
+    useAuthStore.setState({
+      isAuthenticated: true,
+      openAuthModal: openAuthModalSpy,
+    });
+
+    render(<PropertyCard property={completeProperty} />);
+
+    const detailsLink = screen.getByText(/View Details/i).closest("a");
+    expect(detailsLink).toBeInTheDocument();
+
+    fireEvent.click(detailsLink!);
+    expect(openAuthModalSpy).not.toHaveBeenCalled();
   });
 });
 

@@ -85,10 +85,22 @@ export function PropertyCard({ property: rawProperty }: PropertyCardProps) {
     }
   };
 
+  const handleDetailsClick = (e: React.MouseEvent) => {
+    if (!isAuthenticated) {
+      e.preventDefault();
+      e.stopPropagation();
+      openAuthModal(`/properties/${property.id}`);
+    }
+  };
+
   return (
     <div className="group relative flex flex-col rounded-2xl border border-slate-200/90 bg-white overflow-hidden shadow-card transition-all duration-300 hover:shadow-elevated hover:border-[#C5A059]/40">
       {/* Media Gallery / Image Carousel */}
-      <div className="relative aspect-[16/10] w-full overflow-hidden bg-slate-100">
+      <Link
+        href={`/properties/${property.id}`}
+        onClick={handleDetailsClick}
+        className="relative aspect-[16/10] w-full overflow-hidden bg-slate-100 block cursor-pointer"
+      >
         <Image
           src={photos[activePhotoIdx] || photos[0]}
           alt={property.title || "Property Photo"}
@@ -151,10 +163,14 @@ export function PropertyCard({ property: rawProperty }: PropertyCardProps) {
             </div>
           </div>
         )}
-      </div>
+      </Link>
 
       {/* Property Details Body */}
-      <Link href={`/properties/${property.id}`} className="flex flex-1 flex-col p-4 sm:p-5">
+      <Link
+        href={`/properties/${property.id}`}
+        onClick={handleDetailsClick}
+        className="flex flex-1 flex-col p-4 sm:p-5"
+      >
         {/* Price & Deposit Header */}
         <div className="flex items-baseline justify-between mb-2">
           <div>

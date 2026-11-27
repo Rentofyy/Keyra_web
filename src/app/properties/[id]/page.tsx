@@ -35,6 +35,7 @@ import {
   CheckCircle2,
   X,
   Loader2,
+  Lock,
 } from "lucide-react";
 
 export default function PropertyDetailPage() {
@@ -67,10 +68,17 @@ export default function PropertyDetailPage() {
       const res = await apiClient.get<PropertyDetail>(`/properties/${propertyId}`);
       return res.data;
     },
-    enabled: !!propertyId,
+    enabled: !!propertyId && isAuthenticated,
   });
 
   const property = rawProperty ? (normalizeProperty(rawProperty) as PropertyDetail) : null;
+
+  // Prompt sign in if unauthenticated on direct visit
+  useEffect(() => {
+    if (!isAuthenticated && propertyId) {
+      openAuthModal(`/properties/${propertyId}`);
+    }
+  }, [isAuthenticated, propertyId, openAuthModal]);
 
   // On mount or auth change, check favourite status
   useEffect(() => {
@@ -196,6 +204,39 @@ export default function PropertyDetailPage() {
       setIsSchedulingVisit(false);
     }
   };
+
+  if (!isAuthenticated) {
+    return (
+      <div className="min-h-[70vh] flex items-center justify-center px-4 py-20 bg-slate-50/50">
+        <div className="mx-auto max-w-md w-full rounded-3xl border border-slate-200/90 bg-white p-8 text-center shadow-card">
+          <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-[#060C18] text-[#C5A059] shadow-sm">
+            <Lock className="h-8 w-8 text-[#C5A059]" />
+          </div>
+          <h2 className="font-heading text-2xl font-extrabold text-[#060C18] mt-5">
+            Sign In to View Property Details
+          </h2>
+          <p className="text-xs sm:text-sm text-slate-500 mt-2 leading-relaxed">
+            Please sign in with your mobile number to view complete owner-verified property details, high-resolution photos, society amenities, and schedule guided home tours.
+          </p>
+          <Button
+            variant="gold"
+            onClick={() => openAuthModal(`/properties/${propertyId}`)}
+            className="w-full mt-6 h-12 font-bold shadow-gold text-sm"
+          >
+            Sign In with Mobile
+          </Button>
+          <div className="mt-4">
+            <Link
+              href="/properties"
+              className="text-xs font-semibold text-slate-500 hover:text-slate-800 transition-colors"
+            >
+              ← Back to Browse Properties
+            </Link>
+          </div>
+        </div>
+      </div>
+    );
+  }
 
   if (isLoading) {
     return (
