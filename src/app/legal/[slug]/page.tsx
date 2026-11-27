@@ -28,8 +28,8 @@ const LEGAL_DOCS: Record<string, LegalContent> = {
         body: "Landlords are solely responsible for ensuring the truthfulness of property details, rent, and deposit amounts. KEYRA reserves the right to unpublish, verify, or audit any property listing through physical field inspections.",
       },
       {
-        heading: "4. Visit Quota and Conduct",
-        body: "Users are granted free physical property visits. Repeated no-shows or abusive behavior towards KEYRA field executives or property owners will result in visit quota suspension.",
+        heading: "4. Visit Scheduling and Conduct",
+        body: "Users can schedule physical property visits with a nominal ₹39 fee per visit for field executive guided assistance. Repeated no-shows or abusive behavior towards KEYRA field executives or property owners will result in visit scheduling suspension.",
       },
       {
         heading: "5. Limitation of Liability",

@@ -173,7 +173,7 @@ export default function CarePlanPage() {
                 <ul className="mt-6 space-y-3 text-xs font-medium text-slate-700">
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="h-4 w-4 text-[#006A61] shrink-0" />
-                    3 Free In-Person Property Visits
+                    Personally Guided Property Visits (₹39)
                   </li>
                   <li className="flex items-center gap-2">
                     <CheckCircle2 className="h-4 w-4 text-[#006A61] shrink-0" />

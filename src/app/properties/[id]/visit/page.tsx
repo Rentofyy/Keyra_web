@@ -65,7 +65,7 @@ export default function PropertyVisitPage() {
     } catch (err: any) {
       alert(
         err.response?.data?.message ||
-          "Could not schedule visit. Visit quota may be exhausted."
+          "Could not schedule visit. Please try again."
       );
     } finally {
       setIsSubmitting(false);
@@ -235,14 +235,31 @@ export default function PropertyVisitPage() {
               </div>
             </div>
 
-            {/* Assurance Box */}
-            <div className="rounded-2xl border border-[#006A61]/20 bg-[#E6F5F3]/50 p-4 text-xs text-[#006A61] space-y-1">
-              <p className="font-bold flex items-center gap-1.5">
-                <ShieldCheck className="h-4 w-4" /> 100% Free & No Brokerage Obligation
-              </p>
-              <p className="text-[11px] opacity-90">
-                Your first 3 physical visits are completely free. If you don&apos;t like this flat, our executive can show you other verified options in {locality}.
-              </p>
+            {/* Nominal Visit Fee & Guided Tour Explanation */}
+            <div className="rounded-2xl border border-amber-200/80 bg-amber-50/50 p-4 text-xs space-y-2.5 shadow-sm">
+              <div className="flex items-center justify-between border-b border-amber-200/60 pb-2">
+                <div className="flex items-center gap-2">
+                  <span className="flex h-7 w-7 items-center justify-center rounded-lg bg-[#060C18] text-[#C5A059]">
+                    <ShieldCheck className="h-4 w-4" />
+                  </span>
+                  <div>
+                    <p className="font-bold text-slate-900 text-sm">Nominal Visit Fee: ₹39</p>
+                    <p className="text-[11px] text-amber-800 font-medium">Zero Brokerage • In-Person Guided Home Tour</p>
+                  </div>
+                </div>
+                <span className="rounded-full bg-amber-100 text-amber-900 px-2.5 py-0.5 text-xs font-extrabold">
+                  ₹39 / visit
+                </span>
+              </div>
+              <div className="space-y-1.5 text-slate-600 text-[11.5px] leading-relaxed">
+                <p className="font-bold text-slate-800">Why a ₹39 visit fee?</p>
+                <p>
+                  This nominal fee directly covers your <strong>dedicated KEYRA Field Executive</strong> who personally meets you at the property and gives you a complete, unhurried home tour.
+                </p>
+                <p className="text-slate-500 text-[11px]">
+                  It also filters out casual enquiries so the property owner reserves exclusive time for your scheduled walkthrough.
+                </p>
+              </div>
             </div>
 
             <Button
@@ -256,7 +273,7 @@ export default function PropertyVisitPage() {
                   <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Submitting Request...
                 </>
               ) : (
-                "Submit Visit Request"
+                "Submit Visit Request (₹39)"
               )}
             </Button>
           </form>

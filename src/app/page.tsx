@@ -254,10 +254,10 @@ export default function HomePage() {
             </div>
             <div className="p-3 border-l border-slate-200">
               <span className="font-heading text-2xl sm:text-3xl font-extrabold text-[#C5A059]">
-                3 Free
+                ₹39
               </span>
               <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mt-1">
-                Physical Visits Included
+                Guided Home Tours
               </p>
             </div>
             <div className="p-3 border-l border-slate-200">

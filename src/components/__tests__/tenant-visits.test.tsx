@@ -88,6 +88,10 @@ describe("TenantVisitsPage - Visit Request State & Staff Assignment UI", () => {
       screen.getByText(/Requested \(Awaiting Staff Assignment\)/i)
     ).toBeInTheDocument();
 
+    // Verify Guided Home Tours ₹39 header indicator is present
+    expect(screen.getByText(/Guided Home Tours/i)).toBeInTheDocument();
+    expect(screen.getByText(/₹39/i)).toBeInTheDocument();
+
     // Verify "Schedule is requested" callout is visible
     expect(screen.getByText(/Schedule is requested/i)).toBeInTheDocument();
     expect(

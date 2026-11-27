@@ -131,7 +131,7 @@ export default function PropertyDetailPage() {
     } catch (err: any) {
       alert(
         err.response?.data?.message ||
-          "Failed to schedule visit. Free visit quota may be exhausted."
+          "Could not schedule visit. Please try again."
       );
     } finally {
       setIsSchedulingVisit(false);
@@ -412,10 +412,10 @@ export default function PropertyDetailPage() {
                 }}
                 className="w-full justify-center text-sm font-bold shadow-gold"
               >
-                <Calendar className="mr-2 h-4 w-4" /> Schedule Physical Visit
+                <Calendar className="mr-2 h-4 w-4" /> Schedule Physical Visit (₹39)
               </Button>
-              <p className="text-[11px] text-center text-slate-400">
-                3 Free Visits included with your KEYRA account
+              <p className="text-[11px] text-center text-slate-500 font-medium">
+                Nominal ₹39 commitment fee • In-person guided home tour by KEYRA executive
               </p>
 
               {/* Secondary CTA: Finalize Property */}
@@ -578,8 +578,19 @@ export default function PropertyDetailPage() {
                   </div>
                 </div>
 
-                <div className="rounded-xl border border-[#006A61]/20 bg-[#E6F5F3]/60 p-3 text-xs text-[#006A61]">
-                  <strong>Zero Obligation:</strong> If you don&apos;t like the home, you pay nothing. You have 3 free physical visits included.
+                {/* Nominal Visit Fee & Guided Tour Explanation */}
+                <div className="rounded-xl border border-amber-200/80 bg-amber-50/50 p-3.5 text-xs text-slate-700 space-y-2">
+                  <div className="flex items-center justify-between border-b border-amber-200/60 pb-1.5">
+                    <span className="font-bold text-slate-900 flex items-center gap-1.5">
+                      <ShieldCheck className="h-4 w-4 text-[#C5A059]" /> Nominal Visit Fee
+                    </span>
+                    <span className="font-extrabold text-[#060C18] bg-amber-100 px-2 py-0.5 rounded text-[11px]">
+                      ₹39 / visit
+                    </span>
+                  </div>
+                  <p className="text-[11.5px] text-slate-600 leading-relaxed">
+                    This nominal fee covers your <strong>dedicated KEYRA Field Executive</strong> who personally meets you at the home to provide a guided in-person tour, while filtering out casual enquiries for owners.
+                  </p>
                 </div>
 
                 <Button
@@ -593,7 +604,7 @@ export default function PropertyDetailPage() {
                       <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Submitting Request...
                     </>
                   ) : (
-                    "Submit Visit Request"
+                    "Submit Visit Request (₹39)"
                   )}
                 </Button>
               </form>

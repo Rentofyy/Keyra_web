@@ -169,17 +169,17 @@ export default function TenantVisitsPage() {
           </p>
         </div>
 
-        {/* Quota Indicator */}
-        <div className="rounded-2xl border border-slate-200 bg-white p-3.5 shadow-sm flex items-center gap-3">
-          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#E6F5F3] text-[#006A61]">
-            <Calendar className="h-5 w-5" />
+        {/* Guided Home Tour Pricing Indicator */}
+        <div className="rounded-2xl border border-amber-200/80 bg-amber-50/50 p-3.5 shadow-sm flex items-center gap-3">
+          <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#060C18] text-[#C5A059]">
+            <ShieldCheck className="h-5 w-5" />
           </div>
           <div>
-            <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
-              Free Visit Quota
+            <span className="text-[10px] font-bold uppercase tracking-wider text-amber-800">
+              Guided Home Tours
             </span>
             <p className="text-sm font-extrabold text-slate-900">
-              {quota?.freeVisitsRemaining ?? 3} of {quota?.totalFreeVisits ?? 3} Remaining
+              ₹39 <span className="text-xs font-normal text-slate-500">/ visit with KEYRA Executive</span>
             </p>
           </div>
         </div>
@@ -198,7 +198,7 @@ export default function TenantVisitsPage() {
             No Visits Scheduled Yet
           </h3>
           <p className="text-xs text-slate-500 mt-1 max-w-sm mx-auto">
-            You haven&apos;t booked any physical property visits. Browse verified homes in Pune West and schedule a free inspection.
+            You haven&apos;t booked any physical property visits. Browse verified homes in Pune West and schedule an in-person walkthrough.
           </p>
           <Link href="/properties">
             <Button variant="gold" className="mt-5 font-bold shadow-gold">
