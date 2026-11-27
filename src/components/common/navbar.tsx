@@ -158,7 +158,7 @@ export function Navbar() {
       <div className="mx-auto flex h-16 max-w-7xl items-center justify-between px-4 sm:px-6 lg:px-8">
         {/* Left: Brand Logo & Locality Dropdown */}
         <div className="flex items-center gap-6">
-          <KeyraLogo height={38} priority className="h-10 w-auto" />
+          <KeyraLogo height={42} priority className="h-10 sm:h-11 w-auto" />
 
           {/* Micro-market selector */}
           <div className="hidden lg:flex items-center gap-1.5 rounded-full border border-slate-200 bg-slate-50 px-3 py-1.5 text-xs font-medium text-slate-700">
