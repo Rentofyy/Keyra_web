@@ -110,25 +110,45 @@ export default function PropertyVisitPage() {
       <div className="rounded-3xl border border-slate-200 bg-white p-6 sm:p-8 shadow-card">
         {isSuccess ? (
           <div className="text-center py-6 space-y-4">
-            <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-emerald-100 text-emerald-700">
-              <CheckCircle2 className="h-9 w-9" />
+            <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-100 text-emerald-700">
+              <CheckCircle2 className="h-8 w-8" />
             </div>
-            <h2 className="font-heading text-2xl font-extrabold text-[#0F1E36]">
-              Visit Scheduled!
+            <h2 className="font-heading text-2xl font-extrabold text-[#060C18]">
+              Visit Requested
             </h2>
-            <p className="text-sm text-slate-600 max-w-md mx-auto">
-              Our verified KEYRA Field Executive has received your request and will meet you at{" "}
-              <strong>{property.societyName || property.title}</strong> on{" "}
-              <strong>{visitDate}</strong> during the <strong>{visitTimeSlot}</strong> slot.
+            <p className="text-xs text-slate-600 max-w-sm mx-auto">
+              Your visit request for &quot;<strong className="text-slate-900">{property.societyName || property.title}</strong>&quot; has been submitted.
             </p>
-            <div className="pt-4 flex flex-col sm:flex-row gap-3 justify-center">
-              <Link href="/tenant/visits">
-                <Button variant="gold" className="w-full sm:w-auto font-bold">
-                  View My Scheduled Visits
+
+            {/* Visit summary card matching mobile app */}
+            <div className="rounded-xl border border-slate-200 bg-slate-50 p-4 text-left text-xs space-y-2 max-w-md mx-auto">
+              <div className="flex items-center gap-2 text-slate-700">
+                <Calendar className="h-4 w-4 text-[#C5A059]" />
+                <span className="font-semibold">{visitDate}</span>
+              </div>
+              <div className="flex items-center gap-2 text-slate-700">
+                <Clock className="h-4 w-4 text-[#C5A059]" />
+                <span className="font-semibold">{visitTimeSlot}</span>
+              </div>
+              <div className="pt-1">
+                <span className="inline-block rounded-md bg-amber-100 border border-amber-200/80 px-2.5 py-1 text-[11px] font-bold text-amber-800">
+                  Status: REQUESTED (Awaiting Staff Assignment)
+                </span>
+              </div>
+            </div>
+
+            <p className="text-xs text-slate-500 max-w-md mx-auto leading-relaxed">
+              We will assign you staff as soon as possible. You can track this request in your visit schedule.
+            </p>
+
+            <div className="pt-3 flex flex-col sm:flex-row gap-3 justify-center max-w-md mx-auto">
+              <Link href="/tenant/visits" className="w-full sm:w-auto flex-1">
+                <Button variant="gold" className="w-full font-bold shadow-gold">
+                  View All Visits
                 </Button>
               </Link>
-              <Link href={`/properties/${propertyId}`}>
-                <Button variant="outline" className="w-full sm:w-auto">
+              <Link href={`/properties/${propertyId}`} className="w-full sm:w-auto flex-1">
+                <Button variant="outline" className="w-full">
                   Back to Property
                 </Button>
               </Link>
@@ -140,7 +160,7 @@ export default function PropertyVisitPage() {
               <span className="text-[11px] font-bold uppercase tracking-wider text-[#006A61] bg-[#E6F5F3] px-2.5 py-1 rounded-full">
                 Zero Brokerage Visit
               </span>
-              <h1 className="font-heading text-2xl font-extrabold text-[#0F1E36] mt-2">
+              <h1 className="font-heading text-2xl font-extrabold text-[#060C18] mt-2">
                 Schedule Physical Property Visit
               </h1>
               <p className="text-xs text-slate-500 mt-1">
@@ -165,7 +185,7 @@ export default function PropertyVisitPage() {
                   <MapPin className="h-3 w-3 text-[#C5A059] mr-1 shrink-0" />
                   {locality}, Pune West
                 </p>
-                <p className="font-heading text-xs font-bold text-[#0F1E36] mt-1">
+                <p className="font-heading text-xs font-bold text-[#060C18] mt-1">
                   {formatRent(property.monthlyRent || property.rentAmount || 0)}/mo
                 </p>
               </div>
@@ -204,7 +224,7 @@ export default function PropertyVisitPage() {
                     onClick={() => setVisitTimeSlot(slot)}
                     className={`rounded-xl border p-3 text-xs font-bold transition-all text-center ${
                       visitTimeSlot === slot
-                        ? "border-[#0F1E36] bg-[#0F1E36] text-white shadow-sm"
+                        ? "border-[#060C18] bg-[#060C18] text-white shadow-sm"
                         : "border-slate-200 bg-slate-50 text-slate-700 hover:border-slate-300"
                     }`}
                   >
@@ -233,10 +253,10 @@ export default function PropertyVisitPage() {
             >
               {isSubmitting ? (
                 <>
-                  <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Scheduling...
+                  <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Submitting Request...
                 </>
               ) : (
-                "Confirm & Schedule Visit"
+                "Submit Visit Request"
               )}
             </Button>
           </form>

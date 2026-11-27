@@ -23,6 +23,7 @@ import {
   MapPin,
   ShieldCheck,
   Calendar,
+  Clock,
   Heart,
   ChevronLeft,
   ChevronRight,
@@ -474,19 +475,38 @@ export default function PropertyDetailPage() {
                 <div className="mx-auto flex h-14 w-14 items-center justify-center rounded-2xl bg-emerald-100 text-emerald-700">
                   <CheckCircle2 className="h-8 w-8" />
                 </div>
-                <h3 className="font-heading text-xl font-extrabold text-[#0F1E36]">
-                  Visit Scheduled Successfully!
+                <h3 className="font-heading text-xl font-extrabold text-[#060C18]">
+                  Visit Requested
                 </h3>
-                <p className="text-xs text-slate-500 max-w-sm mx-auto">
-                  Our KEYRA field executive will meet you at{" "}
-                  <strong className="text-slate-800">{property.societyName || property.title}</strong>{" "}
-                  on <strong className="text-slate-800">{visitDate}</strong> during the{" "}
-                  <strong className="text-slate-800">{visitTimeSlot}</strong> slot.
+                <p className="text-xs text-slate-600 max-w-sm mx-auto">
+                  Your visit request for &quot;<strong className="text-slate-900">{property.societyName || property.title}</strong>&quot; has been submitted.
                 </p>
+
+                {/* Visit summary card matching mobile app */}
+                <div className="rounded-xl border border-slate-200 bg-slate-50 p-3.5 text-left text-xs space-y-2">
+                  <div className="flex items-center gap-2 text-slate-700">
+                    <Calendar className="h-4 w-4 text-[#C5A059]" />
+                    <span className="font-semibold">{visitDate}</span>
+                  </div>
+                  <div className="flex items-center gap-2 text-slate-700">
+                    <Clock className="h-4 w-4 text-[#C5A059]" />
+                    <span className="font-semibold">{visitTimeSlot}</span>
+                  </div>
+                  <div className="pt-1">
+                    <span className="inline-block rounded-md bg-amber-100 border border-amber-200/80 px-2.5 py-1 text-[11px] font-bold text-amber-800">
+                      Status: REQUESTED (Awaiting Staff Assignment)
+                    </span>
+                  </div>
+                </div>
+
+                <p className="text-xs text-slate-500 max-w-sm mx-auto leading-relaxed">
+                  We will assign you staff as soon as possible. You can track this request in your visit schedule.
+                </p>
+
                 <div className="pt-2 flex flex-col gap-2">
                   <Link href="/tenant/visits">
-                    <Button variant="gold" className="w-full font-bold">
-                      View My Scheduled Visits
+                    <Button variant="gold" className="w-full font-bold shadow-gold">
+                      View All Visits
                     </Button>
                   </Link>
                   <Button
@@ -504,11 +524,11 @@ export default function PropertyDetailPage() {
             ) : (
               <form onSubmit={handleScheduleVisitSubmit} className="space-y-4">
                 <div className="flex items-center gap-3 border-b border-slate-100 pb-3">
-                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#0F1E36] text-[#C5A059]">
+                  <div className="flex h-10 w-10 shrink-0 items-center justify-center rounded-xl bg-[#060C18] text-[#C5A059]">
                     <Calendar className="h-5 w-5" />
                   </div>
                   <div>
-                    <h3 className="font-heading text-base font-bold text-[#0F1E36]">
+                    <h3 className="font-heading text-base font-bold text-[#060C18]">
                       Schedule In-Person Visit
                     </h3>
                     <p className="text-xs text-slate-500">
@@ -548,7 +568,7 @@ export default function PropertyDetailPage() {
                         onClick={() => setVisitTimeSlot(slot)}
                         className={`rounded-xl border p-2.5 text-xs font-bold transition-all text-center ${
                           visitTimeSlot === slot
-                            ? "border-[#0F1E36] bg-[#0F1E36] text-white shadow-sm"
+                            ? "border-[#060C18] bg-[#060C18] text-white shadow-sm"
                             : "border-slate-200 bg-slate-50 text-slate-700 hover:border-slate-300"
                         }`}
                       >
@@ -570,10 +590,10 @@ export default function PropertyDetailPage() {
                 >
                   {isSchedulingVisit ? (
                     <>
-                      <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Scheduling...
+                      <Loader2 className="mr-2 h-4 w-4 animate-spin" /> Submitting Request...
                     </>
                   ) : (
-                    "Confirm Visit Schedule"
+                    "Submit Visit Request"
                   )}
                 </Button>
               </form>

@@ -115,30 +115,39 @@ export default function TenantVisitsPage() {
     );
   }
 
-  const getStatusBadge = (status: string) => {
+  const getStatusBadge = (status: string, executiveName?: string) => {
     switch (status) {
+      case "REQUESTED":
+        return (
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-50 border border-amber-200/80 px-3 py-1 text-xs font-bold text-amber-800 shadow-xs">
+            <Clock className="h-3.5 w-3.5 text-amber-600 animate-pulse" />
+            <span>Requested (Awaiting Staff Assignment)</span>
+          </span>
+        );
       case "CONFIRMED":
         return (
-          <span className="inline-flex items-center gap-1 rounded-full bg-emerald-100 px-3 py-1 text-xs font-bold text-emerald-800">
-            <CheckCircle2 className="h-3.5 w-3.5" /> Confirmed
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-emerald-50 border border-emerald-200/80 px-3 py-1 text-xs font-bold text-emerald-800 shadow-xs">
+            <CheckCircle2 className="h-3.5 w-3.5 text-emerald-600" />
+            <span>{executiveName ? `Confirmed • Executive: ${executiveName}` : "Confirmed"}</span>
           </span>
         );
       case "COMPLETED":
         return (
-          <span className="inline-flex items-center gap-1 rounded-full bg-blue-100 px-3 py-1 text-xs font-bold text-blue-800">
-            <CheckCircle2 className="h-3.5 w-3.5" /> Completed
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-blue-50 border border-blue-200/80 px-3 py-1 text-xs font-bold text-blue-800 shadow-xs">
+            <CheckCircle2 className="h-3.5 w-3.5 text-blue-600" /> Completed
           </span>
         );
       case "CANCELLED":
         return (
-          <span className="inline-flex items-center gap-1 rounded-full bg-slate-100 px-3 py-1 text-xs font-bold text-slate-500">
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-slate-100 border border-slate-200 px-3 py-1 text-xs font-bold text-slate-500">
             <XCircle className="h-3.5 w-3.5" /> Cancelled
           </span>
         );
       default:
         return (
-          <span className="inline-flex items-center gap-1 rounded-full bg-amber-100 px-3 py-1 text-xs font-bold text-amber-800">
-            <Clock className="h-3.5 w-3.5" /> Executive Assigned
+          <span className="inline-flex items-center gap-1.5 rounded-full bg-amber-50 border border-amber-200/80 px-3 py-1 text-xs font-bold text-amber-800 shadow-xs">
+            <Clock className="h-3.5 w-3.5 text-amber-600" />
+            <span>Requested (Awaiting Staff Assignment)</span>
           </span>
         );
     }
@@ -206,7 +215,7 @@ export default function TenantVisitsPage() {
             >
               <div className="space-y-2">
                 <div className="flex items-center gap-2">
-                  {getStatusBadge(v.status)}
+                  {getStatusBadge(v.status, v.executiveName)}
                   <span className="text-xs text-slate-400">
                     Booked {formatDate(v.createdAt || new Date().toISOString())}
                   </span>
@@ -233,6 +242,31 @@ export default function TenantVisitsPage() {
                     Slot: {v.timeSlot}
                   </span>
                 </div>
+
+                {v.status === "REQUESTED" && (
+                  <div className="mt-2 rounded-xl border border-amber-200/80 bg-amber-50/70 p-3 text-xs text-amber-900 flex items-start gap-2.5">
+                    <Clock className="h-4 w-4 text-amber-600 shrink-0 mt-0.5" />
+                    <div>
+                      <p className="font-bold">Schedule is requested</p>
+                      <p className="text-amber-700 text-[11px] mt-0.5 leading-relaxed">
+                        We will assign you staff as soon as possible. Our admin team will assign a verified KEYRA field executive for your visit.
+                      </p>
+                    </div>
+                  </div>
+                )}
+
+                {v.status === "CONFIRMED" && (
+                  <div className="mt-2 rounded-xl border border-emerald-200/80 bg-emerald-50/70 p-3 text-xs text-emerald-900 flex items-start gap-2.5">
+                    <CheckCircle2 className="h-4 w-4 text-emerald-600 shrink-0 mt-0.5" />
+                    <div>
+                      <p className="font-bold">Field Executive Assigned</p>
+                      <p className="text-emerald-700 text-[11px] mt-0.5 leading-relaxed">
+                        {v.executiveName ? `${v.executiveName} ` : "Your KEYRA executive "}
+                        {v.executivePhone ? `(${v.executivePhone}) ` : ""}will meet you at the property.
+                      </p>
+                    </div>
+                  </div>
+                )}
               </div>
 
               <div className="flex sm:flex-col items-center sm:items-end gap-2 pt-2 sm:pt-0 border-t sm:border-0 border-slate-100">
