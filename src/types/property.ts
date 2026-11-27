@@ -54,6 +54,9 @@ export interface PropertySummary {
   societyAmenities?: string[] | string | null;
   isFeatured?: boolean | null;
   visitCount?: number | null;
+  subscriptionTier?: string | null;
+  planCode?: string | null;
+  isExclusive?: boolean | null;
 }
 
 export interface PropertyDetail extends PropertySummary {

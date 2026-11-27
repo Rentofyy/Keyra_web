@@ -29,6 +29,10 @@ function PropertiesContent() {
   const rawCategory = searchParams.get("category")?.toUpperCase();
   const isColiving = rawCategory === "COLIVING";
   const isCommercial = rawCategory === "COMMERCIAL";
+  const isPg =
+    rawCategory === "PG" ||
+    rawCategory === "PG_FLATMATE" ||
+    rawCategory === "PG_ACCOMMODATION";
 
   const {
     searchQuery,
@@ -67,9 +71,13 @@ function PropertiesContent() {
     }
   }, [searchParams, locality, bhk, searchQuery, setLocality, setBhk, setSearchQuery]);
 
-  // If user navigated to Coliving or Commercial, show dedicated Coming Soon UI immediately without querying backend
-  if (isColiving || isCommercial) {
-    return <CategoryComingSoon category={isColiving ? "COLIVING" : "COMMERCIAL"} />;
+  // If user navigated to Coliving, PG, or Commercial, show dedicated Coming Soon UI immediately without querying backend
+  if (isColiving || isCommercial || isPg) {
+    return (
+      <CategoryComingSoon
+        category={isColiving ? "COLIVING" : isCommercial ? "COMMERCIAL" : "PG"}
+      />
+    );
   }
 
   return (
@@ -281,6 +289,27 @@ function ResidentialPropertiesView({
             if (tp && tp !== "ANY") return tp.includes(pref);
             if (rules.includes(pref) || desc.includes(pref)) return true;
             return true;
+          });
+        }
+
+        // Apply client-side sorting guarantee
+        if (sortBy === "rentAmount,desc") {
+          list.sort((a: any, b: any) => {
+            const rentA = Number(a.monthlyRent ?? a.rentAmount ?? 0);
+            const rentB = Number(b.monthlyRent ?? b.rentAmount ?? 0);
+            return rentB - rentA;
+          });
+        } else if (sortBy === "rentAmount,asc") {
+          list.sort((a: any, b: any) => {
+            const rentA = Number(a.monthlyRent ?? a.rentAmount ?? 0);
+            const rentB = Number(b.monthlyRent ?? b.rentAmount ?? 0);
+            return rentA - rentB;
+          });
+        } else if (sortBy === "createdAt,desc") {
+          list.sort((a: any, b: any) => {
+            const dateA = a.createdAt ? new Date(a.createdAt).getTime() : 0;
+            const dateB = b.createdAt ? new Date(b.createdAt).getTime() : 0;
+            return dateB - dateA;
           });
         }
 

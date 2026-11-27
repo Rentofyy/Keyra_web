@@ -37,7 +37,7 @@ export const TENANT_PREFERENCES = [
 ] as const;
 
 export const PROPERTY_CATEGORIES = [
-  { label: "Family Flats", value: "RESIDENTIAL", desc: "Apartments & Gated Societies" },
+  { label: "Apartments", value: "RESIDENTIAL", desc: "Apartments & Gated Societies" },
   { label: "Coliving & Flatmates", value: "COLIVING", desc: "Shared Flats in Hinjewadi & Baner" },
   { label: "PG Accommodations", value: "PG", desc: "Meals Included & Zero Brokerage" },
   { label: "Commercial", value: "COMMERCIAL", desc: "Offices & Retail Shops" },

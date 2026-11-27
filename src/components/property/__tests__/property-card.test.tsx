@@ -58,6 +58,16 @@ describe("PropertyCard Component & Safe Null Handling", () => {
     expect(screen.getByText(/Deposit: ₹70,000/i)).toBeInTheDocument();
   });
 
+  it("renders KEYRA Exclusive badge when subscriptionTier is CARE", () => {
+    const carePlanProperty: PropertySummary = {
+      ...completeProperty,
+      subscriptionTier: "CARE",
+    };
+
+    render(<PropertyCard property={carePlanProperty} />);
+    expect(screen.getByText(/KEYRA Exclusive/i)).toBeInTheDocument();
+  });
+
   it("handles missing/null BHK safely without crashing (uses fallback 'BHK')", () => {
     const missingBhkProperty: any = {
       ...completeProperty,

@@ -21,6 +21,15 @@ describe("CategoryComingSoon", () => {
     expect(screen.getByText(/Direct Owner Terms/i)).toBeInTheDocument();
   });
 
+  it("renders PG Accommodation Coming Soon view with appropriate titles, navigation, and benefits", () => {
+    render(<CategoryComingSoon category="PG" />);
+
+    expect(screen.getAllByText(/PG Accommodations/i).length).toBeGreaterThan(0);
+    expect(screen.getByText(/Coming Soon to Pune West/i)).toBeInTheDocument();
+    expect(screen.getByText(/Homestyle Meals & Dining/i)).toBeInTheDocument();
+    expect(screen.getByText(/Apartments/i)).toBeInTheDocument();
+  });
+
   it("allows user to submit waitlist notification input and shows success feedback", async () => {
     render(<CategoryComingSoon category="COLIVING" />);
 

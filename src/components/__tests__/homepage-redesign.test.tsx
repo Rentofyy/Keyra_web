@@ -80,7 +80,7 @@ describe("Homepage Hero Redesign & New Service Sections", () => {
     render(<HomePage />);
 
     // Category tabs
-    expect(screen.getByRole("button", { name: /Family Flats/i })).toBeInTheDocument();
+    expect(screen.getByRole("button", { name: /Apartments/i })).toBeInTheDocument();
     expect(screen.getByRole("button", { name: /Coliving & Flatmates/i })).toBeInTheDocument();
 
     // Form fields

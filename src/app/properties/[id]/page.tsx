@@ -282,6 +282,11 @@ export default function PropertyDetailPage() {
     property.depositAmount ??
     (rent > 0 ? rent * 2 : 0);
   const carpetArea = property.carpetAreaSqFt ?? property.carpetAreaSqft;
+  const isCarePlan =
+    property.subscriptionTier === "CARE" ||
+    (property as any).planCode === "OWNER_CARE" ||
+    (property as any).planCode === "CARE" ||
+    Boolean((property as any).isExclusive);
 
   // Parse amenities if string or array
   const amenitiesList: string[] = Array.isArray(property.amenities)
@@ -328,6 +333,12 @@ export default function PropertyDetailPage() {
           >
             <Heart className={`h-5 w-5 ${isFav ? "fill-red-600" : ""}`} />
           </button>
+          {isCarePlan && (
+            <span className="inline-flex items-center gap-1.5 rounded-full bg-gradient-to-r from-[#C5A059] via-[#D4AF37] to-[#B8860B] px-3.5 py-1.5 text-xs font-extrabold uppercase tracking-wider text-[#060C18] border border-[#F4EBD9] shadow-sm">
+              <Sparkles className="h-4 w-4 fill-[#060C18] text-[#060C18]" />
+              KEYRA Exclusive
+            </span>
+          )}
           <span className="inline-flex items-center gap-1.5 rounded-full bg-[#E6F5F3] px-3.5 py-1.5 text-xs font-bold text-[#006A61] border border-[#006A61]/30 shadow-sm">
             <ShieldCheck className="h-4 w-4" />
             KEYRA Inspected • 0% Brokerage

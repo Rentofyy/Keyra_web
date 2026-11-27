@@ -15,10 +15,11 @@ import {
   Home,
   Check,
   Compass,
+  Coffee,
 } from "lucide-react";
 
 interface CategoryComingSoonProps {
-  category: "COLIVING" | "COMMERCIAL";
+  category: "COLIVING" | "COMMERCIAL" | "PG";
 }
 
 export function CategoryComingSoon({ category }: CategoryComingSoonProps) {
@@ -27,6 +28,8 @@ export function CategoryComingSoon({ category }: CategoryComingSoonProps) {
   const [isSubmitting, setIsSubmitting] = useState(false);
 
   const isColiving = category === "COLIVING";
+  const isCommercial = category === "COMMERCIAL";
+  const isPg = category === "PG";
 
   const handleNotifySubmit = (e: React.FormEvent) => {
     e.preventDefault();
@@ -61,7 +64,7 @@ export function CategoryComingSoon({ category }: CategoryComingSoonProps) {
           className="flex items-center gap-2 px-4 py-2 rounded-full text-xs sm:text-sm font-semibold border border-slate-200 bg-white text-slate-700 hover:border-[#060C18] hover:text-[#060C18] transition-all shadow-sm"
         >
           <Home className="h-4 w-4 text-slate-400" />
-          <span>Residential Flats</span>
+          <span>Apartments</span>
         </Link>
         <Link
           href="/properties?category=COLIVING"
@@ -75,14 +78,25 @@ export function CategoryComingSoon({ category }: CategoryComingSoonProps) {
           <span>Coliving & Shared Spaces</span>
         </Link>
         <Link
-          href="/properties?category=COMMERCIAL"
+          href="/properties?category=PG"
           className={`flex items-center gap-2 px-4 py-2 rounded-full text-xs sm:text-sm font-bold border transition-all shadow-sm ${
-            !isColiving
+            isPg
               ? "bg-[#060C18] text-white border-[#060C18] shadow-md"
               : "border-slate-200 bg-white text-slate-700 hover:border-[#060C18]"
           }`}
         >
-          <Building2 className={`h-4 w-4 ${!isColiving ? "text-[#C5A059]" : "text-slate-400"}`} />
+          <Coffee className={`h-4 w-4 ${isPg ? "text-[#C5A059]" : "text-slate-400"}`} />
+          <span>PG Accommodations</span>
+        </Link>
+        <Link
+          href="/properties?category=COMMERCIAL"
+          className={`flex items-center gap-2 px-4 py-2 rounded-full text-xs sm:text-sm font-bold border transition-all shadow-sm ${
+            isCommercial
+              ? "bg-[#060C18] text-white border-[#060C18] shadow-md"
+              : "border-slate-200 bg-white text-slate-700 hover:border-[#060C18]"
+          }`}
+        >
+          <Building2 className={`h-4 w-4 ${isCommercial ? "text-[#C5A059]" : "text-slate-400"}`} />
           <span>Commercial & Offices</span>
         </Link>
       </div>
@@ -94,7 +108,13 @@ export function CategoryComingSoon({ category }: CategoryComingSoonProps) {
 
         {/* Brand Icon Header */}
         <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-[#060C18] to-[#0A1528] text-[#C5A059] shadow-lg shadow-[#060C18]/15 ring-4 ring-[#F4EBD9]">
-          {isColiving ? <Users className="h-10 w-10" /> : <Building2 className="h-10 w-10" />}
+          {isColiving ? (
+            <Users className="h-10 w-10" />
+          ) : isPg ? (
+            <Coffee className="h-10 w-10" />
+          ) : (
+            <Building2 className="h-10 w-10" />
+          )}
         </div>
 
         {/* Coming Soon Pill */}
@@ -109,6 +129,10 @@ export function CategoryComingSoon({ category }: CategoryComingSoonProps) {
             <>
               Zero-Brokerage <span className="text-[#C5A059]">Coliving</span> Is On The Way
             </>
+          ) : isPg ? (
+            <>
+              Verified <span className="text-[#C5A059]">PG Accommodations</span> Are On The Way
+            </>
           ) : (
             <>
               Managed <span className="text-[#C5A059]">Commercial Spaces</span> Are On The Way
@@ -119,7 +143,9 @@ export function CategoryComingSoon({ category }: CategoryComingSoonProps) {
         {/* Subtitle */}
         <p className="mt-4 text-sm sm:text-base text-slate-600 max-w-xl mx-auto leading-relaxed">
           {isColiving
-            ? "We're curating 100% verified shared apartments, executive PGs, and student-friendly coliving spaces in Hinjewadi, Baner, Wakad, and Balewadi with zero brokerage and verified flatmates."
+            ? "We're curating 100% verified shared apartments, executive coliving spaces in Hinjewadi, Baner, Wakad, and Balewadi with zero brokerage and verified flatmates."
+            : isPg
+            ? "We're onboarding 100% verified student and professional PGs across Hinjewadi, Baner, Wakad, and Balewadi with homestyle meals, high-speed WiFi, daily housekeeping, and zero brokerage."
             : "Premium managed office spaces, tech park workspaces, and retail showrooms across Hinjewadi Phase 1-3, Balewadi High Street, and Baner are launching soon with 0% brokerage."}
         </p>
 
@@ -170,6 +196,38 @@ export function CategoryComingSoon({ category }: CategoryComingSoonProps) {
                 </p>
               </div>
             </>
+          ) : isPg ? (
+            <>
+              <div className="rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm space-y-2 hover:border-[#C5A059]/60 transition-colors">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#F4EBD9] text-[#C5A059]">
+                  <Coffee className="h-5 w-5" />
+                </div>
+                <h4 className="font-heading text-sm font-bold text-[#060C18]">Homestyle Meals & Dining</h4>
+                <p className="text-xs text-slate-500 leading-relaxed">
+                  Daily hygienic breakfast and dinner, clean dining halls, and RO purified water in all partner PGs.
+                </p>
+              </div>
+
+              <div className="rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm space-y-2 hover:border-[#C5A059]/60 transition-colors">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#E6F5F3] text-[#006A61]">
+                  <ShieldCheck className="h-5 w-5" />
+                </div>
+                <h4 className="font-heading text-sm font-bold text-[#060C18]">Zero Brokerage & Low Deposit</h4>
+                <p className="text-xs text-slate-500 leading-relaxed">
+                  No 1-month brokerage or heavy security deposits. Direct transparent agreements with verified PG operators.
+                </p>
+              </div>
+
+              <div className="rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm space-y-2 hover:border-[#C5A059]/60 transition-colors">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#060C18]/5 text-[#060C18]">
+                  <Home className="h-5 w-5" />
+                </div>
+                <h4 className="font-heading text-sm font-bold text-[#060C18]">Move-In Ready & Secure Stays</h4>
+                <p className="text-xs text-slate-500 leading-relaxed">
+                  High-speed WiFi, daily housekeeping, biometric security, CCTV surveillance, and dedicated male/female wings.
+                </p>
+              </div>
+            </>
           ) : (
             <>
               <div className="rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm space-y-2 hover:border-[#C5A059]/60 transition-colors">
@@ -216,7 +274,7 @@ export function CategoryComingSoon({ category }: CategoryComingSoonProps) {
                 You&apos;re on the Priority Waitlist!
               </h4>
               <p className="text-xs text-slate-300 max-w-sm">
-                Thank you! We will notify you directly when verified {isColiving ? "Coliving & Shared" : "Commercial & Office"} spaces launch in Pune West.
+                Thank you! We will notify you directly when verified {isColiving ? "Coliving & Shared" : isPg ? "PG Accommodations" : "Commercial & Office"} spaces launch in Pune West.
               </p>
             </div>
           ) : (
@@ -226,7 +284,7 @@ export function CategoryComingSoon({ category }: CategoryComingSoonProps) {
                 <span>Get Notified on Launch</span>
               </div>
               <h4 className="font-heading text-lg font-bold text-white">
-                Be the first to access verified {isColiving ? "Coliving" : "Commercial"} spaces
+                Be the first to access verified {isColiving ? "Coliving" : isPg ? "PG Accommodations" : "Commercial"} spaces
               </h4>
               <p className="text-xs text-slate-300">
                 Enter your phone or email to receive priority access and an exclusive launch offer.

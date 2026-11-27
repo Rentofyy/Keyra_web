@@ -20,6 +20,7 @@ import {
   ShieldCheck,
   ChevronLeft,
   ChevronRight,
+  Sparkles,
 } from "lucide-react";
 
 interface PropertyCardProps {
@@ -44,6 +45,12 @@ export function PropertyCard({ property: rawProperty }: PropertyCardProps) {
     property.depositAmount ??
     (rent > 0 ? rent * 2 : 0);
   const carpetArea = property.carpetAreaSqFt ?? property.carpetAreaSqft;
+
+  const isCarePlan =
+    property.subscriptionTier === "CARE" ||
+    (property as any).planCode === "OWNER_CARE" ||
+    (property as any).planCode === "CARE" ||
+    Boolean((property as any).isExclusive);
 
   const toggleFavorite = async (e: React.MouseEvent) => {
     e.preventDefault();
@@ -94,7 +101,13 @@ export function PropertyCard({ property: rawProperty }: PropertyCardProps) {
   };
 
   return (
-    <div className="group relative flex flex-col rounded-2xl border border-slate-200/90 bg-white overflow-hidden shadow-card transition-all duration-300 hover:shadow-elevated hover:border-[#C5A059]/40">
+    <div
+      className={`group relative flex flex-col rounded-2xl border ${
+        isCarePlan
+          ? "border-[#C5A059]/50 shadow-md ring-1 ring-[#C5A059]/20"
+          : "border-slate-200/90"
+      } bg-white overflow-hidden shadow-card transition-all duration-300 hover:shadow-elevated hover:border-[#C5A059]/50`}
+    >
       {/* Media Gallery / Image Carousel */}
       <Link
         href={`/properties/${property.id}`}
@@ -109,8 +122,14 @@ export function PropertyCard({ property: rawProperty }: PropertyCardProps) {
           className="object-cover transition-transform duration-500 group-hover:scale-105"
         />
 
-        {/* Top Badges: Zero Brokerage & Verified */}
+        {/* Top Badges: KEYRA Exclusive (Care Plan), Zero Brokerage & Verified */}
         <div className="absolute top-3 left-3 flex flex-wrap items-center gap-1.5 z-10">
+          {isCarePlan && (
+            <span className="inline-flex items-center gap-1 rounded-full bg-gradient-to-r from-[#C5A059] via-[#D4AF37] to-[#B8860B] px-2.5 py-1 text-[10px] font-extrabold uppercase tracking-wider text-[#060C18] shadow-md border border-[#F4EBD9]">
+              <Sparkles className="h-3 w-3 fill-[#060C18] text-[#060C18]" />
+              KEYRA Exclusive
+            </span>
+          )}
           <span className="inline-flex items-center gap-1 rounded-full bg-[#0F1E36]/90 px-2.5 py-1 text-[11px] font-bold text-[#C5A059] shadow-sm backdrop-blur-md">
             0% Brokerage
           </span>
