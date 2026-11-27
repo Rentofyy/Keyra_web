@@ -162,9 +162,9 @@ export function FilterDrawer({ isOpen, onClose }: FilterDrawerProps) {
                 {TENANT_PREFERENCES.map((opt) => (
                   <button
                     key={opt.value}
-                    onClick={() => setTenantPreference(opt.value)}
+                    onClick={() => setTenantPreference(opt.value === "ANY" ? "" : opt.value)}
                     className={`px-3 py-2 rounded-lg text-xs font-semibold text-center transition-colors ${
-                      tenantPreference === opt.value
+                      (tenantPreference === opt.value || (!tenantPreference && opt.value === "ANY"))
                         ? "bg-[#0F1E36] text-white"
                         : "bg-slate-100 text-slate-700 hover:bg-slate-200"
                     }`}

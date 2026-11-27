@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, Suspense } from "react";
+import { useState, useEffect, Suspense } from "react";
 import { useSearchParams } from "next/navigation";
 import { useQuery } from "@tanstack/react-query";
 import { useFilterStore } from "@/stores/filter-store";
@@ -9,7 +9,7 @@ import { PropertySummary } from "@/types/property";
 import { PropertyGrid } from "@/components/property/property-grid";
 import { FilterDrawer } from "@/components/property/filter-drawer";
 import { CategoryComingSoon } from "@/components/property/category-coming-soon";
-import { normalizeProperty } from "@/lib/property-helper";
+import { normalizeProperty, deriveLocality } from "@/lib/property-helper";
 import { Button } from "@/components/ui/button";
 import {
   PUNE_WEST_LOCALITIES,
@@ -49,6 +49,23 @@ function PropertiesContent() {
 
   const [isFilterDrawerOpen, setIsFilterDrawerOpen] = useState(false);
   const [page, setPage] = useState(0);
+
+  // Sync URL query parameters on initial page load if provided
+  useEffect(() => {
+    const urlLocality = searchParams.get("locality");
+    const urlBhk = searchParams.get("bhk");
+    const urlSearch = searchParams.get("search");
+
+    if (urlLocality && urlLocality !== locality) {
+      setLocality(urlLocality);
+    }
+    if (urlBhk && urlBhk !== bhk) {
+      setBhk(urlBhk);
+    }
+    if (urlSearch && urlSearch !== searchQuery) {
+      setSearchQuery(urlSearch);
+    }
+  }, [searchParams, locality, bhk, searchQuery, setLocality, setBhk, setSearchQuery]);
 
   // If user navigated to Coliving or Commercial, show dedicated Coming Soon UI immediately without querying backend
   if (isColiving || isCommercial) {
@@ -99,6 +116,11 @@ function ResidentialPropertiesView({
   page,
   setPage,
 }: any) {
+  // Reset pagination to first page whenever any filter changes
+  useEffect(() => {
+    setPage(0);
+  }, [locality, bhk, minRent, maxRent, furnishingStatus, tenantPreference, sortBy, setPage]);
+
   // Fetch properties matching current filter parameters
   const { data, isLoading } = useQuery<{
     content: PropertySummary[];
@@ -120,13 +142,46 @@ function ResidentialPropertiesView({
     queryFn: async () => {
       const params = new URLSearchParams();
       params.set("page", String(page));
-      params.set("size", "12");
+      params.set("size", "30");
       params.set("sort", sortBy);
-      if (locality) params.set("locality", locality);
-      if (bhk) params.set("bhk", bhk);
-      if (category) params.set("category", category);
-      if (furnishingStatus) params.set("furnishingStatus", furnishingStatus);
-      if (tenantPreference) params.set("tenantPreference", tenantPreference);
+
+      // Search & Locality: pass to both 'search' and 'locality'
+      const searchTerms = [locality, searchQuery].filter(Boolean).join(" ").trim();
+      if (searchTerms) {
+        params.set("search", searchTerms);
+        if (locality) params.set("locality", locality);
+      }
+
+      // BHK: normalize e.g. "2_BHK" -> "2 BHK", "4_PLUS_BHK" -> "4+ BHK"
+      if (bhk) {
+        const formattedBhk =
+          bhk === "4_PLUS_BHK"
+            ? "4+ BHK"
+            : bhk.replace("_PLUS_", "+").replace(/_/g, " ");
+        params.set("bhkType", formattedBhk);
+        params.set("bhk", formattedBhk);
+      }
+
+      // Rent Range: pass minPrice/minRent and maxPrice/maxRent
+      if (minRent && minRent > 5000) {
+        params.set("minPrice", String(minRent));
+        params.set("minRent", String(minRent));
+      }
+      if (maxRent && maxRent < 150000) {
+        params.set("maxPrice", String(maxRent));
+        params.set("maxRent", String(maxRent));
+      }
+
+      // Furnishing: send both FURNISHED and FULLY_FURNISHED compatible
+      if (furnishingStatus) {
+        const mappedFurnishing =
+          furnishingStatus === "FULLY_FURNISHED" ? "FURNISHED" : furnishingStatus;
+        params.set("furnishingStatus", mappedFurnishing);
+      }
+
+      if (category) {
+        params.set("category", category);
+      }
 
       try {
         const res = await apiClient.get<{
@@ -134,12 +189,105 @@ function ResidentialPropertiesView({
           totalPages: number;
           totalElements: number;
         }>(`/properties?${params.toString()}`);
+
+        let list = (res.data?.content || [])
+          .map(normalizeProperty)
+          .filter(
+            (p: any) =>
+              p.status !== "RENTED" &&
+              p.approvalStatus !== "RENTED" &&
+              p.verificationStatus !== "RENTED"
+          );
+
+        // Client-side filtering guarantee
+        if (locality) {
+          const locLower = locality.toLowerCase();
+          list = list.filter((p: any) => {
+            const derived = deriveLocality(p.address, p.locality).toLowerCase();
+            const addr = (p.address || "").toLowerCase();
+            const title = (p.title || "").toLowerCase();
+            return (
+              derived.includes(locLower) ||
+              addr.includes(locLower) ||
+              title.includes(locLower)
+            );
+          });
+        }
+
+        if (bhk) {
+          const targetBhk =
+            bhk === "4_PLUS_BHK"
+              ? "4"
+              : bhk.replace(/_/g, " ").toUpperCase();
+          list = list.filter((p: any) => {
+            const pBhk = (p.bhkType || p.bhk || "").toUpperCase();
+            if (bhk === "4_PLUS_BHK") {
+              return (
+                pBhk.includes("4") ||
+                pBhk.includes("5") ||
+                pBhk.includes("6") ||
+                pBhk.includes("4+")
+              );
+            }
+            if (bhk === "1_RK") {
+              return (
+                pBhk.includes("1 RK") ||
+                pBhk.includes("1RK") ||
+                pBhk.includes("RK")
+              );
+            }
+            const num = targetBhk.replace(/\D/g, "");
+            return (
+              pBhk.includes(targetBhk) ||
+              pBhk.replace(/\s+/g, "").includes(targetBhk.replace(/\s+/g, "")) ||
+              (num && pBhk.includes(num))
+            );
+          });
+        }
+
+        if (minRent && minRent > 5000) {
+          list = list.filter((p: any) => {
+            const rent = p.monthlyRent || p.rentAmount || 0;
+            return rent >= minRent;
+          });
+        }
+
+        if (maxRent && maxRent < 150000) {
+          list = list.filter((p: any) => {
+            const rent = p.monthlyRent || p.rentAmount || 0;
+            return rent <= maxRent;
+          });
+        }
+
+        if (furnishingStatus) {
+          list = list.filter((p: any) => {
+            const f = (p.furnishingStatus || "").toUpperCase();
+            if (
+              furnishingStatus === "FULLY_FURNISHED" ||
+              furnishingStatus === "FURNISHED"
+            ) {
+              return f === "FULLY_FURNISHED" || f === "FURNISHED";
+            }
+            return f === furnishingStatus.toUpperCase();
+          });
+        }
+
+        if (tenantPreference && tenantPreference !== "ANY") {
+          const pref = tenantPreference.toUpperCase();
+          list = list.filter((p: any) => {
+            const tp = (p.tenantPreference || "").toUpperCase();
+            const rules = (p.rules || "").toUpperCase();
+            const desc = (p.description || "").toUpperCase();
+            if (tp && tp !== "ANY") return tp.includes(pref);
+            if (rules.includes(pref) || desc.includes(pref)) return true;
+            return true;
+          });
+        }
+
         return {
-          content: (res.data?.content || [])
-            .map(normalizeProperty)
-            .filter((p: any) => p.status !== "RENTED" && p.approvalStatus !== "RENTED" && p.verificationStatus !== "RENTED"),
-          totalPages: res.data?.totalPages || 0,
-          totalElements: res.data?.totalElements || 0,
+          content: list,
+          totalPages: res.data?.totalPages || 1,
+          totalElements: list.length > 0 ? list.length : (res.data?.totalElements || 0),
         };
       } catch {
         return { content: [], totalPages: 0, totalElements: 0 };
