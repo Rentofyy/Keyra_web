@@ -17,7 +17,7 @@ export default function OwnersLandingPage() {
   return (
     <div className="flex flex-col min-h-screen bg-slate-50">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-[#0F1E36] to-[#1A2F50] text-white py-16 sm:py-24">
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#060C18] to-[#0A1528] text-white py-16 sm:py-24">
         <div className="absolute inset-0 bg-[radial-gradient(#C5A059_1px,transparent_1px)] [background-size:24px_24px] opacity-10" />
 
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center space-y-6">
@@ -48,7 +48,7 @@ export default function OwnersLandingPage() {
               <Button
                 variant="outline"
                 size="lg"
-                className="w-full sm:w-auto border-slate-200 bg-white text-[#0F1E36] hover:bg-slate-100 hover:text-[#0F1E36] hover:border-slate-300 font-semibold shadow-sm h-13 transition-colors duration-200"
+                className="w-full sm:w-auto border-slate-200 bg-white text-[#060C18] hover:bg-slate-100 hover:text-[#060C18] hover:border-slate-300 font-semibold shadow-sm h-13 transition-colors duration-200"
               >
                 Open Owner Dashboard
               </Button>
@@ -76,7 +76,7 @@ export default function OwnersLandingPage() {
             <span className="text-xs font-bold uppercase tracking-wider text-[#006A61] bg-[#E6F5F3] px-3 py-1 rounded-full">
               Why Homeowners Choose KEYRA
             </span>
-            <h2 className="font-heading text-2xl sm:text-4xl font-extrabold text-[#0F1E36]">
+            <h2 className="font-heading text-2xl sm:text-4xl font-extrabold text-[#060C18]">
               A Superior Rental Experience for Landlords
             </h2>
             <p className="text-xs sm:text-sm text-slate-500 max-w-xl mx-auto">
@@ -128,7 +128,7 @@ export default function OwnersLandingPage() {
       <section className="bg-white py-16 border-y border-slate-200">
         <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 space-y-8">
           <div className="text-center space-y-2">
-            <h2 className="font-heading text-2xl sm:text-3xl font-extrabold text-[#0F1E36]">
+            <h2 className="font-heading text-2xl sm:text-3xl font-extrabold text-[#060C18]">
               Traditional Brokers vs. KEYRA
             </h2>
             <p className="text-xs sm:text-sm text-slate-500">
@@ -138,11 +138,11 @@ export default function OwnersLandingPage() {
 
           <div className="overflow-hidden rounded-3xl border border-slate-200 shadow-card">
             <table className="w-full text-left text-sm">
-              <thead className="bg-[#0F1E36] text-white text-xs uppercase tracking-wider font-semibold">
+              <thead className="bg-[#060C18] text-white text-xs uppercase tracking-wider font-semibold">
                 <tr>
                   <th className="p-4 sm:p-5">Feature</th>
                   <th className="p-4 sm:p-5 text-slate-400">Traditional Broker</th>
-                  <th className="p-4 sm:p-5 text-[#C5A059] bg-[#1A2F50]">KEYRA Platform</th>
+                  <th className="p-4 sm:p-5 text-[#C5A059] bg-[#0A1528]">KEYRA Platform</th>
                 </tr>
               </thead>
               <tbody className="divide-y divide-slate-100 font-medium text-slate-700">
@@ -180,7 +180,7 @@ export default function OwnersLandingPage() {
       {/* Bottom CTA Banner */}
       <section className="py-16 sm:py-20 text-center">
         <div className="mx-auto max-w-3xl px-4 sm:px-6 lg:px-8 space-y-6">
-          <h2 className="font-heading text-3xl sm:text-4xl font-extrabold text-[#0F1E36]">
+          <h2 className="font-heading text-3xl sm:text-4xl font-extrabold text-[#060C18]">
             Ready to Find Your Ideal Tenant?
           </h2>
           <p className="text-sm text-slate-500 max-w-xl mx-auto">

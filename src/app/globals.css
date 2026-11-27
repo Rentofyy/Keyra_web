@@ -13,8 +13,8 @@
     --popover: 0 0% 100%;
     --popover-foreground: 222 47% 11%;
 
-    /* KEYRA Deep Navy #0F1E36 */
-    --primary: 218 56% 14%;
+    /* KEYRA Deep Midnight Navy #060C18 */
+    --primary: 218 60% 6%;
     --primary-foreground: 210 40% 98%;
 
     /* KEYRA Champagne Gold #C5A059 */
@@ -33,7 +33,7 @@
 
     --border: 214.3 31.8% 91.4%;
     --input: 214.3 31.8% 91.4%;
-    --ring: 218 56% 14%;
+    --ring: 218 60% 6%;
 
     --radius: 0.75rem;
   }

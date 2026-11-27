@@ -171,7 +171,7 @@ export default function NewPropertyWizardPage() {
         </Link>
         <div className="flex flex-col sm:flex-row sm:items-center justify-between gap-2">
           <div>
-            <h1 className="font-heading text-2xl sm:text-3xl font-extrabold text-[#0F1E36]">
+            <h1 className="font-heading text-2xl sm:text-3xl font-extrabold text-[#060C18]">
               List Your Property
             </h1>
             <p className="text-xs sm:text-sm text-slate-500 mt-1">
@@ -215,7 +215,7 @@ export default function NewPropertyWizardPage() {
                 key={s.num}
                 className={`rounded-xl border p-2.5 text-center transition-all ${
                   step === s.num
-                    ? "border-[#0F1E36] bg-[#0F1E36] text-white shadow-sm"
+                    ? "border-[#060C18] bg-[#060C18] text-white shadow-sm"
                     : step > s.num
                     ? "border-emerald-200 bg-emerald-50 text-emerald-800"
                     : "border-slate-200 bg-white text-slate-400"
@@ -234,7 +234,7 @@ export default function NewPropertyWizardPage() {
         {/* Step 1: Location */}
         {step === 1 && (
           <div className="space-y-5">
-            <h2 className="font-heading text-lg font-bold text-[#0F1E36]">
+            <h2 className="font-heading text-lg font-bold text-[#060C18]">
               Step 1: Property Location & Locality
             </h2>
 
@@ -314,7 +314,7 @@ export default function NewPropertyWizardPage() {
         {/* Step 2: Configuration & Pricing */}
         {step === 2 && (
           <div className="space-y-5">
-            <h2 className="font-heading text-lg font-bold text-[#0F1E36]">
+            <h2 className="font-heading text-lg font-bold text-[#060C18]">
               Step 2: Configuration & Pricing
             </h2>
 
@@ -491,7 +491,7 @@ export default function NewPropertyWizardPage() {
         {/* Step 3: Amenities & Preferences */}
         {step === 3 && (
           <div className="space-y-5">
-            <h2 className="font-heading text-lg font-bold text-[#0F1E36]">
+            <h2 className="font-heading text-lg font-bold text-[#060C18]">
               Step 3: Amenities & Society Features
             </h2>
 
@@ -567,7 +567,7 @@ export default function NewPropertyWizardPage() {
         {/* Step 4: Photos & Verification */}
         {step === 4 && (
           <div className="space-y-6">
-            <h2 className="font-heading text-lg font-bold text-[#0F1E36]">
+            <h2 className="font-heading text-lg font-bold text-[#060C18]">
               Step 4: Upload Photos & Verification Document
             </h2>
 
@@ -589,7 +589,7 @@ export default function NewPropertyWizardPage() {
                   multiple
                   accept="image/*"
                   onChange={handlePhotoSelect}
-                  className="mt-4 text-xs text-slate-500 file:mr-3 file:rounded-xl file:border-0 file:bg-[#0F1E36] file:px-4 file:py-2 file:text-xs file:font-semibold file:text-white hover:file:bg-[#1A2F50]"
+                  className="mt-4 text-xs text-slate-500 file:mr-3 file:rounded-xl file:border-0 file:bg-[#060C18] file:px-4 file:py-2 file:text-xs file:font-semibold file:text-white hover:file:bg-[#0A1528]"
                 />
               </div>
 
@@ -686,7 +686,7 @@ export default function NewPropertyWizardPage() {
             <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-2xl bg-emerald-100 text-emerald-700">
               <CheckCircle2 className="h-9 w-9" />
             </div>
-            <h2 className="font-heading text-2xl font-extrabold text-[#0F1E36]">
+            <h2 className="font-heading text-2xl font-extrabold text-[#060C18]">
               Property Listed Successfully!
             </h2>
             <p className="text-sm text-slate-600 max-w-md mx-auto">

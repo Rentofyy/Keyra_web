@@ -39,8 +39,8 @@ function NavbarNavLinks() {
         href="/properties"
         className={`flex items-center gap-1.5 px-3 py-2 text-sm rounded-lg transition-colors ${
           isExplore
-            ? "bg-[#F4EBD9]/70 text-[#0F1E36] font-bold border border-[#C5A059]/40 shadow-xs"
-            : "font-medium text-slate-700 hover:text-[#0F1E36] hover:bg-slate-50"
+            ? "bg-[#F4EBD9]/70 text-[#060C18] font-bold border border-[#C5A059]/40 shadow-xs"
+            : "font-medium text-slate-700 hover:text-[#060C18] hover:bg-slate-50"
         }`}
       >
         <Compass className={`h-4 w-4 ${isExplore ? "text-[#C5A059]" : "text-slate-400"}`} />
@@ -50,8 +50,8 @@ function NavbarNavLinks() {
         href="/properties?category=COLIVING"
         className={`flex items-center gap-1.5 px-3 py-2 text-sm rounded-lg transition-colors ${
           isColiving
-            ? "bg-[#F4EBD9]/70 text-[#0F1E36] font-bold border border-[#C5A059]/40 shadow-xs"
-            : "font-medium text-slate-700 hover:text-[#0F1E36] hover:bg-slate-50"
+            ? "bg-[#F4EBD9]/70 text-[#060C18] font-bold border border-[#C5A059]/40 shadow-xs"
+            : "font-medium text-slate-700 hover:text-[#060C18] hover:bg-slate-50"
         }`}
       >
         <Users className={`h-4 w-4 ${isColiving ? "text-[#C5A059]" : "text-slate-400"}`} />
@@ -61,8 +61,8 @@ function NavbarNavLinks() {
         href="/properties?category=COMMERCIAL"
         className={`flex items-center gap-1.5 px-3 py-2 text-sm rounded-lg transition-colors ${
           isCommercial
-            ? "bg-[#F4EBD9]/70 text-[#0F1E36] font-bold border border-[#C5A059]/40 shadow-xs"
-            : "font-medium text-slate-700 hover:text-[#0F1E36] hover:bg-slate-50"
+            ? "bg-[#F4EBD9]/70 text-[#060C18] font-bold border border-[#C5A059]/40 shadow-xs"
+            : "font-medium text-slate-700 hover:text-[#060C18] hover:bg-slate-50"
         }`}
       >
         <Building2 className={`h-4 w-4 ${isCommercial ? "text-[#C5A059]" : "text-slate-400"}`} />
@@ -72,8 +72,8 @@ function NavbarNavLinks() {
         href="/properties/map"
         className={`flex items-center gap-1.5 px-3 py-2 text-sm rounded-lg transition-colors ${
           isMap
-            ? "bg-[#F4EBD9]/70 text-[#0F1E36] font-bold border border-[#C5A059]/40 shadow-xs"
-            : "font-medium text-slate-700 hover:text-[#0F1E36] hover:bg-slate-50"
+            ? "bg-[#F4EBD9]/70 text-[#060C18] font-bold border border-[#C5A059]/40 shadow-xs"
+            : "font-medium text-slate-700 hover:text-[#060C18] hover:bg-slate-50"
         }`}
       >
         <MapPin className={`h-4 w-4 ${isMap ? "text-[#C5A059]" : "text-slate-400"}`} />
@@ -100,7 +100,7 @@ function MobileMenuNavLinks({ onNavigate }: { onNavigate: () => void }) {
         onClick={onNavigate}
         className={`flex items-center gap-2 p-2 text-sm rounded-lg transition-colors ${
           isExplore
-            ? "bg-[#F4EBD9]/80 text-[#0F1E36] font-bold border border-[#C5A059]/40"
+            ? "bg-[#F4EBD9]/80 text-[#060C18] font-bold border border-[#C5A059]/40"
             : "font-medium text-slate-700 hover:bg-slate-50"
         }`}
       >
@@ -112,7 +112,7 @@ function MobileMenuNavLinks({ onNavigate }: { onNavigate: () => void }) {
         onClick={onNavigate}
         className={`flex items-center gap-2 p-2 text-sm rounded-lg transition-colors ${
           isMap
-            ? "bg-[#F4EBD9]/80 text-[#0F1E36] font-bold border border-[#C5A059]/40"
+            ? "bg-[#F4EBD9]/80 text-[#060C18] font-bold border border-[#C5A059]/40"
             : "font-medium text-slate-700 hover:bg-slate-50"
         }`}
       >
@@ -124,7 +124,7 @@ function MobileMenuNavLinks({ onNavigate }: { onNavigate: () => void }) {
         onClick={onNavigate}
         className={`flex items-center gap-2 p-2 text-sm rounded-lg transition-colors ${
           isColiving
-            ? "bg-[#F4EBD9]/80 text-[#0F1E36] font-bold border border-[#C5A059]/40"
+            ? "bg-[#F4EBD9]/80 text-[#060C18] font-bold border border-[#C5A059]/40"
             : "font-medium text-slate-700 hover:bg-slate-50"
         }`}
       >
@@ -136,7 +136,7 @@ function MobileMenuNavLinks({ onNavigate }: { onNavigate: () => void }) {
         onClick={onNavigate}
         className={`flex items-center gap-2 p-2 text-sm rounded-lg transition-colors ${
           isCommercial
-            ? "bg-[#F4EBD9]/80 text-[#0F1E36] font-bold border border-[#C5A059]/40"
+            ? "bg-[#F4EBD9]/80 text-[#060C18] font-bold border border-[#C5A059]/40"
             : "font-medium text-slate-700 hover:bg-slate-50"
         }`}
       >
@@ -203,7 +203,7 @@ export function Navbar() {
             >
               <PlusCircle className="h-4 w-4" />
               <span>Post Property</span>
-              <span className="ml-1 text-[11px] rounded bg-[#0F1E36]/10 px-1.5 py-0.2 font-bold">
+              <span className="ml-1 text-[11px] rounded bg-[#060C18]/10 px-1.5 py-0.2 font-bold">
                 FREE
               </span>
             </Button>
@@ -216,7 +216,7 @@ export function Navbar() {
                 onClick={() => setIsProfileDropdownOpen(!isProfileDropdownOpen)}
                 className="flex items-center gap-2 rounded-full border border-slate-200 p-1.5 hover:border-slate-300 focus:outline-none"
               >
-                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#0F1E36] text-white text-xs font-bold">
+                <div className="flex h-8 w-8 items-center justify-center rounded-full bg-[#060C18] text-white text-xs font-bold">
                   {user?.fullName ? user.fullName[0].toUpperCase() : <User className="h-4 w-4" />}
                 </div>
               </button>

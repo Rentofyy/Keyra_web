@@ -55,7 +55,7 @@ export default function CarePlanPage() {
   return (
     <div className="flex flex-col min-h-screen bg-slate-50">
       {/* Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-[#0F1E36] to-[#1A2F50] text-white py-16 sm:py-24">
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#060C18] to-[#0A1528] text-white py-16 sm:py-24">
         <div className="absolute inset-0 bg-[radial-gradient(#006A61_1px,transparent_1px)] [background-size:24px_24px] opacity-15" />
 
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center space-y-6">
@@ -80,7 +80,7 @@ export default function CarePlanPage() {
             <span className="text-xs font-bold uppercase tracking-wider text-[#006A61] bg-[#E6F5F3] px-3 py-1 rounded-full">
               Full Spectrum Protection
             </span>
-            <h2 className="font-heading text-2xl sm:text-4xl font-extrabold text-[#0F1E36]">
+            <h2 className="font-heading text-2xl sm:text-4xl font-extrabold text-[#060C18]">
               What&apos;s Included in KEYRA Care?
             </h2>
             <p className="text-xs sm:text-sm text-slate-500 max-w-xl mx-auto">
@@ -144,7 +144,7 @@ export default function CarePlanPage() {
       <section className="bg-white py-16 border-t border-slate-200">
         <div className="mx-auto max-w-6xl px-4 sm:px-6 lg:px-8 space-y-12">
           <div className="text-center space-y-2">
-            <h2 className="font-heading text-2xl sm:text-3xl font-extrabold text-[#0F1E36]">
+            <h2 className="font-heading text-2xl sm:text-3xl font-extrabold text-[#060C18]">
               Choose Your Protection Tier
             </h2>
             <p className="text-xs sm:text-sm text-slate-500">
@@ -195,7 +195,7 @@ export default function CarePlanPage() {
 
             {/* Tier 2: KEYRA Care (Popular) */}
             <div className="relative rounded-3xl border-2 border-[#C5A059] bg-white p-8 flex flex-col justify-between space-y-6 shadow-elevated">
-              <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 rounded-full bg-[#C5A059] px-4 py-1 text-[11px] font-extrabold uppercase tracking-wider text-[#0F1E36]">
+              <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 rounded-full bg-[#C5A059] px-4 py-1 text-[11px] font-extrabold uppercase tracking-wider text-[#060C18]">
                 Most Popular
               </div>
 
@@ -203,11 +203,11 @@ export default function CarePlanPage() {
                 <span className="text-xs font-bold uppercase tracking-wider text-[#C5A059]">
                   Total Coverage
                 </span>
-                <h3 className="font-heading text-2xl font-extrabold text-[#0F1E36] mt-1">
+                <h3 className="font-heading text-2xl font-extrabold text-[#060C18] mt-1">
                   KEYRA Care Plan
                 </h3>
                 <div className="mt-4 flex items-baseline gap-1">
-                  <span className="font-heading text-4xl font-extrabold text-[#0F1E36]">₹499</span>
+                  <span className="font-heading text-4xl font-extrabold text-[#060C18]">₹499</span>
                   <span className="text-xs text-slate-500">/ month</span>
                 </div>
                 <p className="text-xs text-slate-500 mt-2">

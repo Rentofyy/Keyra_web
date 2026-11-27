@@ -46,10 +46,10 @@ export default {
         ring: "hsl(var(--ring))",
         keyra: {
           navy: {
-            DEFAULT: "#0F1E36",
-            dark: "#0A1424",
-            light: "#1A2F50",
-            deep: "#0B1526"
+            DEFAULT: "#060C18",
+            dark: "#03070E",
+            light: "#0A1528",
+            deep: "#020408"
           },
           gold: {
             DEFAULT: "#C5A059",

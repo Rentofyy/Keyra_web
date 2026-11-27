@@ -5,7 +5,7 @@ import { ShieldCheck, MapPin, Phone, Mail, Award } from "lucide-react";
 
 export function Footer() {
   return (
-    <footer className="border-t border-slate-800 bg-[#0F1E36] text-white">
+    <footer className="border-t border-slate-800 bg-[#060C18] text-white">
       {/* Upper Footer: Value Props */}
       <div className="border-b border-slate-800/80 py-10">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">

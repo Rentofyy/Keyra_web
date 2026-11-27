@@ -274,7 +274,7 @@ export function PropertyFinalizationModal({
           contact: user?.phoneNumber || "",
         },
         theme: {
-          color: "#0F1E36",
+          color: "#060C18",
         },
         handler: async (response: {
           razorpay_order_id?: string;
@@ -399,7 +399,7 @@ export function PropertyFinalizationModal({
               <span className="text-[11px] font-extrabold uppercase tracking-widest text-[#006A61] bg-[#E6F5F3] px-3 py-1 rounded-full">
                 Deal Closure Pass Active
               </span>
-              <h3 className="font-heading text-2xl font-extrabold text-[#0F1E36] mt-2">
+              <h3 className="font-heading text-2xl font-extrabold text-[#060C18] mt-2">
                 Property Finalization Confirmed
               </h3>
               <p className="mt-1 text-xs text-slate-500">
@@ -461,10 +461,10 @@ export function PropertyFinalizationModal({
           <div className="space-y-6">
             {/* Header */}
             <div className="text-center">
-              <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-[#0F1E36] to-[#1A2F50] text-[#C5A059] shadow-md">
+              <div className="mx-auto mb-3 flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-[#060C18] to-[#0A1528] text-[#C5A059] shadow-md">
                 <Sparkles className="h-7 w-7" />
               </div>
-              <h3 className="font-heading text-2xl font-extrabold text-[#0F1E36]">
+              <h3 className="font-heading text-2xl font-extrabold text-[#060C18]">
                 Finalize Property
               </h3>
               <p className="mt-1 text-xs text-slate-500">
@@ -499,7 +499,7 @@ export function PropertyFinalizationModal({
 
             {/* Property Overview Strip */}
             <div className="rounded-2xl border border-slate-200 bg-slate-50 p-4">
-              <h4 className="font-heading text-sm font-bold text-[#0F1E36] line-clamp-1">
+              <h4 className="font-heading text-sm font-bold text-[#060C18] line-clamp-1">
                 {property.title}
               </h4>
               <p className="text-xs text-slate-500 mt-0.5">{property.address || property.locality || "Pune West"}</p>
@@ -524,7 +524,7 @@ export function PropertyFinalizationModal({
 
               <div className="flex justify-between items-center pb-2 border-b border-[#C5A059]/20">
                 <div>
-                  <span className="font-heading text-sm font-bold text-[#0F1E36]">
+                  <span className="font-heading text-sm font-bold text-[#060C18]">
                     KEYRA Service & Deal Closure Fee
                   </span>
                   <p className="text-[11px] text-[#006A61] font-medium">Flat zero-brokerage closure pass</p>
@@ -576,7 +576,7 @@ export function PropertyFinalizationModal({
               {/* Final Amount Payable */}
               <div className="flex justify-between items-center pt-1">
                 <div>
-                  <span className="font-heading text-base font-extrabold text-[#0F1E36]">
+                  <span className="font-heading text-base font-extrabold text-[#060C18]">
                     Total Payable Now
                   </span>
                   {checkoutData?.isWalletOnly ? (

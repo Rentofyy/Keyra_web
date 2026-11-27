@@ -58,7 +58,7 @@ export function CategoryComingSoon({ category }: CategoryComingSoonProps) {
       <div className="flex flex-wrap items-center justify-center gap-2 sm:gap-3 mb-10">
         <Link
           href="/properties"
-          className="flex items-center gap-2 px-4 py-2 rounded-full text-xs sm:text-sm font-semibold border border-slate-200 bg-white text-slate-700 hover:border-[#0F1E36] hover:text-[#0F1E36] transition-all shadow-sm"
+          className="flex items-center gap-2 px-4 py-2 rounded-full text-xs sm:text-sm font-semibold border border-slate-200 bg-white text-slate-700 hover:border-[#060C18] hover:text-[#060C18] transition-all shadow-sm"
         >
           <Home className="h-4 w-4 text-slate-400" />
           <span>Residential Flats</span>
@@ -67,8 +67,8 @@ export function CategoryComingSoon({ category }: CategoryComingSoonProps) {
           href="/properties?category=COLIVING"
           className={`flex items-center gap-2 px-4 py-2 rounded-full text-xs sm:text-sm font-bold border transition-all shadow-sm ${
             isColiving
-              ? "bg-[#0F1E36] text-white border-[#0F1E36] shadow-md"
-              : "border-slate-200 bg-white text-slate-700 hover:border-[#0F1E36]"
+              ? "bg-[#060C18] text-white border-[#060C18] shadow-md"
+              : "border-slate-200 bg-white text-slate-700 hover:border-[#060C18]"
           }`}
         >
           <Users className={`h-4 w-4 ${isColiving ? "text-[#C5A059]" : "text-slate-400"}`} />
@@ -78,8 +78,8 @@ export function CategoryComingSoon({ category }: CategoryComingSoonProps) {
           href="/properties?category=COMMERCIAL"
           className={`flex items-center gap-2 px-4 py-2 rounded-full text-xs sm:text-sm font-bold border transition-all shadow-sm ${
             !isColiving
-              ? "bg-[#0F1E36] text-white border-[#0F1E36] shadow-md"
-              : "border-slate-200 bg-white text-slate-700 hover:border-[#0F1E36]"
+              ? "bg-[#060C18] text-white border-[#060C18] shadow-md"
+              : "border-slate-200 bg-white text-slate-700 hover:border-[#060C18]"
           }`}
         >
           <Building2 className={`h-4 w-4 ${!isColiving ? "text-[#C5A059]" : "text-slate-400"}`} />
@@ -93,18 +93,18 @@ export function CategoryComingSoon({ category }: CategoryComingSoonProps) {
         <div className="absolute top-0 left-1/2 -translate-x-1/2 w-3/4 h-2 bg-gradient-to-r from-transparent via-[#C5A059] to-transparent opacity-80" />
 
         {/* Brand Icon Header */}
-        <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-[#0F1E36] to-[#1A2F50] text-[#C5A059] shadow-lg shadow-[#0F1E36]/15 ring-4 ring-[#F4EBD9]">
+        <div className="mx-auto mb-6 flex h-20 w-20 items-center justify-center rounded-3xl bg-gradient-to-br from-[#060C18] to-[#0A1528] text-[#C5A059] shadow-lg shadow-[#060C18]/15 ring-4 ring-[#F4EBD9]">
           {isColiving ? <Users className="h-10 w-10" /> : <Building2 className="h-10 w-10" />}
         </div>
 
         {/* Coming Soon Pill */}
-        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#0F1E36] text-[#C5A059] text-xs font-bold uppercase tracking-wider mb-4 border border-[#C5A059]/40 shadow-sm">
+        <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-[#060C18] text-[#C5A059] text-xs font-bold uppercase tracking-wider mb-4 border border-[#C5A059]/40 shadow-sm">
           <Sparkles className="h-3.5 w-3.5 text-[#C5A059]" />
           <span>Coming Soon to Pune West</span>
         </div>
 
         {/* Headline */}
-        <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#0F1E36] tracking-tight max-w-2xl mx-auto">
+        <h1 className="font-heading text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#060C18] tracking-tight max-w-2xl mx-auto">
           {isColiving ? (
             <>
               Zero-Brokerage <span className="text-[#C5A059]">Coliving</span> Is On The Way
@@ -144,7 +144,7 @@ export function CategoryComingSoon({ category }: CategoryComingSoonProps) {
                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#E6F5F3] text-[#006A61]">
                   <ShieldCheck className="h-5 w-5" />
                 </div>
-                <h4 className="font-heading text-sm font-bold text-[#0F1E36]">100% Verified Flatmates</h4>
+                <h4 className="font-heading text-sm font-bold text-[#060C18]">100% Verified Flatmates</h4>
                 <p className="text-xs text-slate-500 leading-relaxed">
                   Background-checked professionals and verified students for safe, community-driven shared living.
                 </p>
@@ -154,17 +154,17 @@ export function CategoryComingSoon({ category }: CategoryComingSoonProps) {
                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#F4EBD9] text-[#C5A059]">
                   <Sparkles className="h-5 w-5" />
                 </div>
-                <h4 className="font-heading text-sm font-bold text-[#0F1E36]">Zero Brokerage Guaranteed</h4>
+                <h4 className="font-heading text-sm font-bold text-[#060C18]">Zero Brokerage Guaranteed</h4>
                 <p className="text-xs text-slate-500 leading-relaxed">
                   No 1-month brokerage or hidden broker fees. Direct transparent leases with genuine space owners.
                 </p>
               </div>
 
               <div className="rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm space-y-2 hover:border-[#C5A059]/60 transition-colors">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#0F1E36]/5 text-[#0F1E36]">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#060C18]/5 text-[#060C18]">
                   <Home className="h-5 w-5" />
                 </div>
-                <h4 className="font-heading text-sm font-bold text-[#0F1E36]">Move-In Ready Setups</h4>
+                <h4 className="font-heading text-sm font-bold text-[#060C18]">Move-In Ready Setups</h4>
                 <p className="text-xs text-slate-500 leading-relaxed">
                   High-speed WiFi, regular housekeeping, fully equipped kitchens, and power backup included.
                 </p>
@@ -176,7 +176,7 @@ export function CategoryComingSoon({ category }: CategoryComingSoonProps) {
                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#F4EBD9] text-[#C5A059]">
                   <Building2 className="h-5 w-5" />
                 </div>
-                <h4 className="font-heading text-sm font-bold text-[#0F1E36]">Tech Parks & Prime High Streets</h4>
+                <h4 className="font-heading text-sm font-bold text-[#060C18]">Tech Parks & Prime High Streets</h4>
                 <p className="text-xs text-slate-500 leading-relaxed">
                   Bare shells, warm shells, and fully plug-and-play offices in certified Pune West commercial towers.
                 </p>
@@ -186,17 +186,17 @@ export function CategoryComingSoon({ category }: CategoryComingSoonProps) {
                 <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#E6F5F3] text-[#006A61]">
                   <ShieldCheck className="h-5 w-5" />
                 </div>
-                <h4 className="font-heading text-sm font-bold text-[#0F1E36]">Direct Owner Terms</h4>
+                <h4 className="font-heading text-sm font-bold text-[#060C18]">Direct Owner Terms</h4>
                 <p className="text-xs text-slate-500 leading-relaxed">
                   Zero commission on commercial leases. Transparent lock-in periods and verified landlord titles.
                 </p>
               </div>
 
               <div className="rounded-2xl border border-slate-200/80 bg-white p-5 shadow-sm space-y-2 hover:border-[#C5A059]/60 transition-colors">
-                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#0F1E36]/5 text-[#0F1E36]">
+                <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#060C18]/5 text-[#060C18]">
                   <Sparkles className="h-5 w-5" />
                 </div>
-                <h4 className="font-heading text-sm font-bold text-[#0F1E36]">Assisted Commercial Closure</h4>
+                <h4 className="font-heading text-sm font-bold text-[#060C18]">Assisted Commercial Closure</h4>
                 <p className="text-xs text-slate-500 leading-relaxed">
                   KEYRA assisted physical walkthroughs, floor plan audits, fit-out negotiation, and legal registration.
                 </p>
@@ -206,7 +206,7 @@ export function CategoryComingSoon({ category }: CategoryComingSoonProps) {
         </div>
 
         {/* Priority Early Access Card */}
-        <div className="mt-10 rounded-2xl bg-[#0F1E36] p-6 sm:p-8 text-white max-w-xl mx-auto shadow-md">
+        <div className="mt-10 rounded-2xl bg-[#060C18] p-6 sm:p-8 text-white max-w-xl mx-auto shadow-md">
           {isSubmitted ? (
             <div className="flex flex-col items-center justify-center py-2 space-y-2 text-center animate-in fade-in-50">
               <div className="flex h-12 w-12 items-center justify-center rounded-full bg-emerald-500/20 text-emerald-400">
@@ -260,7 +260,7 @@ export function CategoryComingSoon({ category }: CategoryComingSoonProps) {
             <Button
               variant="outline"
               size="lg"
-              className="text-sm font-bold border-slate-300 hover:border-[#0F1E36] hover:bg-slate-50 text-[#0F1E36]"
+              className="text-sm font-bold border-slate-300 hover:border-[#060C18] hover:bg-slate-50 text-[#060C18]"
             >
               <Compass className="mr-2 h-4 w-4 text-[#C5A059]" />
               Browse 90+ Live Residential Homes
@@ -270,7 +270,7 @@ export function CategoryComingSoon({ category }: CategoryComingSoonProps) {
             <Button
               variant="ghost"
               size="lg"
-              className="text-sm font-semibold text-slate-600 hover:text-[#0F1E36]"
+              className="text-sm font-semibold text-slate-600 hover:text-[#060C18]"
             >
               <MapPin className="mr-2 h-4 w-4 text-slate-400" />
               View Map of Pune West

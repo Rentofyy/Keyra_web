@@ -47,10 +47,10 @@ export function MobileNav() {
                 href={item.href}
                 className="flex flex-col items-center -mt-5"
               >
-                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-r from-[#C5A059] to-[#E5A93C] text-[#0F1E36] shadow-gold transition-transform active:scale-95">
+                <div className="flex h-12 w-12 items-center justify-center rounded-full bg-gradient-to-r from-[#C5A059] to-[#E5A93C] text-[#060C18] shadow-gold transition-transform active:scale-95">
                   <Icon className="h-6 w-6 stroke-[2.5]" />
                 </div>
-                <span className="mt-1 text-[10px] font-bold text-[#0F1E36]">
+                <span className="mt-1 text-[10px] font-bold text-[#060C18]">
                   Post
                 </span>
               </Link>
@@ -72,7 +72,7 @@ export function MobileNav() {
               className={cn(
                 "flex flex-col items-center py-1 px-3 text-[10px] font-medium transition-colors",
                 isActive
-                  ? "text-[#0F1E36] font-bold"
+                  ? "text-[#060C18] font-bold"
                   : "text-slate-500 hover:text-slate-900"
               )}
             >

@@ -62,17 +62,11 @@ export default function HomePage() {
   return (
     <div className="flex flex-col">
       {/* 1. Hero Section */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-[#0F1E36] via-[#142644] to-[#0F1E36] text-white py-14 sm:py-20 lg:py-24">
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#060C18] via-[#0A1528] to-[#060C18] text-white py-10 sm:py-16 lg:py-20">
         {/* Decorative Grid Overlay */}
         <div className="absolute inset-0 bg-[radial-gradient(#C5A059_1px,transparent_1px)] [background-size:24px_24px] opacity-10 pointer-events-none" />
 
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
-          {/* Eyebrow Pill */}
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#C5A059]/40 bg-[#C5A059]/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-[#C5A059] backdrop-blur-md mb-6 shadow-xs">
-            <Sparkles className="h-3.5 w-3.5 text-[#C5A059]" />
-            <span>THE SMARTER WAY TO RENT IN PUNE</span>
-          </div>
-
           {/* Main Headline */}
           <h1 className="font-heading text-3xl sm:text-5xl lg:text-6xl font-extrabold tracking-tight max-w-4xl mx-auto leading-tight sm:leading-none">
             <span className="text-white block">You Find the Home.</span>
@@ -80,65 +74,59 @@ export default function HomePage() {
           </h1>
 
           {/* Subtitle / Description */}
-          <p className="mt-4 sm:mt-6 text-sm sm:text-base md:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed">
+          <p className="mt-3 sm:mt-5 text-sm sm:text-base md:text-lg text-slate-300 max-w-2xl mx-auto leading-relaxed">
             Owner-verified properties. Personally guided home tours. Complete rental assistance from your first visit to move-in.
           </p>
 
-          {/* 3 Feature Cards */}
-          <div className="mt-8 grid grid-cols-1 sm:grid-cols-3 gap-3 sm:gap-4 max-w-3xl mx-auto text-left">
+          {/* 3 Compact Feature Highlights */}
+          <div className="mt-5 sm:mt-6 grid grid-cols-3 gap-2 sm:gap-3 max-w-2xl mx-auto text-center">
             {/* Feature 1 */}
-            <div className="group rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm transition-all duration-200 hover:border-[#C5A059]/50 hover:bg-white/10 hover:shadow-lg hover:shadow-black/20">
-              <div className="flex items-center gap-2.5 mb-1.5">
-                <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#C5A059]/20 text-[#C5A059] group-hover:scale-105 transition-transform shrink-0">
-                  <ShieldCheck className="h-4 w-4" />
-                </div>
-                <h3 className="font-heading text-sm font-bold text-white">Verified Owners</h3>
+            <div className="group rounded-xl border border-white/10 bg-white/5 py-2 px-1 sm:p-2.5 backdrop-blur-xs transition-all duration-200 hover:border-[#C5A059]/40 hover:bg-white/10 flex flex-col items-center justify-center">
+              <div className="flex items-center gap-1 sm:gap-1.5 text-[#C5A059]">
+                <ShieldCheck className="h-3.5 w-3.5 shrink-0" />
+                <h3 className="font-heading text-xs sm:text-sm font-bold text-white truncate">Verified Owners</h3>
               </div>
-              <p className="text-xs text-slate-300 pl-10.5">Proof before listing.</p>
+              <p className="text-[10px] sm:text-xs text-slate-300 mt-0.5 leading-tight truncate">Proof before listing.</p>
             </div>
 
             {/* Feature 2 */}
-            <div className="group rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm transition-all duration-200 hover:border-[#C5A059]/50 hover:bg-white/10 hover:shadow-lg hover:shadow-black/20">
-              <div className="flex items-center gap-2.5 mb-1.5">
-                <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#C5A059]/20 text-[#C5A059] group-hover:scale-105 transition-transform shrink-0">
-                  <Users className="h-4 w-4" />
-                </div>
-                <h3 className="font-heading text-sm font-bold text-white">Guided Tours</h3>
+            <div className="group rounded-xl border border-white/10 bg-white/5 py-2 px-1 sm:p-2.5 backdrop-blur-xs transition-all duration-200 hover:border-[#C5A059]/40 hover:bg-white/10 flex flex-col items-center justify-center">
+              <div className="flex items-center gap-1 sm:gap-1.5 text-[#C5A059]">
+                <Users className="h-3.5 w-3.5 shrink-0" />
+                <h3 className="font-heading text-xs sm:text-sm font-bold text-white truncate">Guided Tours</h3>
               </div>
-              <p className="text-xs text-slate-300 pl-10.5">KEYRA executives.</p>
+              <p className="text-[10px] sm:text-xs text-slate-300 mt-0.5 leading-tight truncate">KEYRA executives.</p>
             </div>
 
             {/* Feature 3 */}
-            <div className="group rounded-2xl border border-white/10 bg-white/5 p-4 backdrop-blur-sm transition-all duration-200 hover:border-[#C5A059]/50 hover:bg-white/10 hover:shadow-lg hover:shadow-black/20">
-              <div className="flex items-center gap-2.5 mb-1.5">
-                <div className="flex h-8 w-8 items-center justify-center rounded-xl bg-[#C5A059]/20 text-[#C5A059] group-hover:scale-105 transition-transform shrink-0">
-                  <Key className="h-4 w-4" />
-                </div>
-                <h3 className="font-heading text-sm font-bold text-white">End-to-End</h3>
+            <div className="group rounded-xl border border-white/10 bg-white/5 py-2 px-1 sm:p-2.5 backdrop-blur-xs transition-all duration-200 hover:border-[#C5A059]/40 hover:bg-white/10 flex flex-col items-center justify-center">
+              <div className="flex items-center gap-1 sm:gap-1.5 text-[#C5A059]">
+                <Key className="h-3.5 w-3.5 shrink-0" />
+                <h3 className="font-heading text-xs sm:text-sm font-bold text-white truncate">End-to-End</h3>
               </div>
-              <p className="text-xs text-slate-300 pl-10.5">Rental assistance.</p>
+              <p className="text-[10px] sm:text-xs text-slate-300 mt-0.5 leading-tight truncate">Rental assistance.</p>
             </div>
           </div>
 
           {/* Hero CTA & Supporting Text */}
-          <div className="mt-8 flex flex-col items-center justify-center gap-2">
+          <div className="mt-5 sm:mt-6 flex flex-col items-center justify-center gap-1.5">
             <Link href="/properties">
               <Button
                 variant="gold"
                 size="lg"
-                className="font-extrabold text-sm sm:text-base px-8 py-3.5 rounded-full shadow-gold hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center gap-2"
+                className="font-extrabold text-sm sm:text-base px-7 py-3 rounded-full shadow-gold hover:scale-[1.02] active:scale-[0.98] transition-all flex items-center gap-2"
               >
                 <span>Find Your Next Home</span>
                 <ArrowRight className="h-4 w-4" />
               </Button>
             </Link>
-            <p className="text-[11px] sm:text-xs font-bold tracking-widest text-[#C5A059]/90 uppercase mt-1">
+            <p className="text-[10px] sm:text-xs font-bold tracking-widest text-[#C5A059]/90 uppercase mt-0.5">
               A BETTER RENTAL JOURNEY STARTS HERE
             </p>
           </div>
 
           {/* Tabbed Search Container */}
-          <div className="mt-10 mx-auto max-w-4xl rounded-3xl bg-white p-3 sm:p-4 shadow-elevated text-slate-900 border border-slate-100">
+          <div className="mt-6 sm:mt-8 mx-auto max-w-4xl rounded-3xl bg-white p-3 sm:p-4 shadow-elevated text-slate-900 border border-slate-100">
             {/* Category Tabs */}
             <div className="flex flex-wrap items-center gap-1.5 border-b border-slate-100 pb-3 mb-3">
               {PROPERTY_CATEGORIES.map((cat) => (
@@ -148,7 +136,7 @@ export default function HomePage() {
                   onClick={() => setSelectedCategory(cat.value)}
                   className={`px-4 py-2 rounded-xl text-xs sm:text-sm font-bold transition-all ${
                     selectedCategory === cat.value
-                      ? "bg-[#0F1E36] text-white shadow-sm"
+                      ? "bg-[#060C18] text-white shadow-sm"
                       : "text-slate-600 hover:bg-slate-100"
                   }`}
                 >
@@ -249,7 +237,7 @@ export default function HomePage() {
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-2 md:grid-cols-4 gap-4 text-center">
             <div className="p-3">
-              <span className="font-heading text-2xl sm:text-3xl font-extrabold text-[#0F1E36]">
+              <span className="font-heading text-2xl sm:text-3xl font-extrabold text-[#060C18]">
                 ₹0
               </span>
               <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mt-1">
@@ -273,7 +261,7 @@ export default function HomePage() {
               </p>
             </div>
             <div className="p-3 border-l border-slate-200">
-              <span className="font-heading text-2xl sm:text-3xl font-extrabold text-[#0F1E36]">
+              <span className="font-heading text-2xl sm:text-3xl font-extrabold text-[#060C18]">
                 15 Days
               </span>
               <p className="text-xs font-semibold text-slate-500 uppercase tracking-wider mt-1">
@@ -292,7 +280,7 @@ export default function HomePage() {
               <Sparkles className="h-3.5 w-3.5" />
               <span>Handpicked Listings</span>
             </div>
-            <h2 className="font-heading text-2xl sm:text-3xl font-bold text-[#0F1E36] mt-1">
+            <h2 className="font-heading text-2xl sm:text-3xl font-bold text-[#060C18] mt-1">
               Verified Properties in Pune West
             </h2>
             <p className="text-sm text-slate-500 mt-1">
@@ -313,7 +301,7 @@ export default function HomePage() {
       </section>
 
       {/* 4. Rental Assistance Section (New) */}
-      <section className="relative overflow-hidden bg-gradient-to-b from-[#0F1E36] via-[#142644] to-[#0F1E36] text-white py-16 sm:py-20 border-t border-slate-800">
+      <section className="relative overflow-hidden bg-gradient-to-b from-[#060C18] via-[#0A1528] to-[#060C18] text-white py-16 sm:py-20 border-t border-slate-800">
         <div className="absolute inset-0 bg-[radial-gradient(#C5A059_1px,transparent_1px)] [background-size:24px_24px] opacity-10 pointer-events-none" />
         <div className="relative mx-auto max-w-7xl px-4 sm:px-6 lg:px-8 text-center">
           {/* Eyebrow */}
@@ -392,12 +380,12 @@ export default function HomePage() {
             <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
               {/* Left Column: Prominent 12 Months Highlight */}
               <div className="lg:col-span-5 flex flex-col items-center lg:items-start text-center lg:text-left">
-                <div className="inline-flex items-center gap-2 rounded-full bg-[#0F1E36] text-[#C5A059] px-4 py-1.5 text-xs font-bold uppercase tracking-wider mb-4 border border-[#C5A059]/40 shadow-xs">
+                <div className="inline-flex items-center gap-2 rounded-full bg-[#060C18] text-[#C5A059] px-4 py-1.5 text-xs font-bold uppercase tracking-wider mb-4 border border-[#C5A059]/40 shadow-xs">
                   <Clock className="h-3.5 w-3.5" />
                   <span>Tenancy Assurance</span>
                 </div>
 
-                <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#0F1E36] tracking-tight leading-tight">
+                <h2 className="font-heading text-3xl sm:text-4xl md:text-5xl font-extrabold text-[#060C18] tracking-tight leading-tight">
                   <span className="text-[#C5A059] text-5xl sm:text-6xl md:text-7xl font-black block tracking-normal">
                     12 Months.
                   </span>
@@ -419,10 +407,10 @@ export default function HomePage() {
               {/* Right Column: 3 Pillars */}
               <div className="lg:col-span-7 grid grid-cols-1 sm:grid-cols-3 gap-4">
                 <div className="rounded-2xl border border-slate-200 bg-slate-50/70 p-5 hover:border-[#C5A059]/50 hover:bg-white hover:shadow-md transition-all">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#0F1E36] text-[#C5A059] mb-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#060C18] text-[#C5A059] mb-3">
                     <Key className="h-5 w-5" />
                   </div>
-                  <h4 className="font-heading text-sm font-bold text-[#0F1E36] mb-1">
+                  <h4 className="font-heading text-sm font-bold text-[#060C18] mb-1">
                     Move-In Handover
                   </h4>
                   <p className="text-xs text-slate-600 leading-relaxed">
@@ -431,10 +419,10 @@ export default function HomePage() {
                 </div>
 
                 <div className="rounded-2xl border border-slate-200 bg-slate-50/70 p-5 hover:border-[#C5A059]/50 hover:bg-white hover:shadow-md transition-all">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#0F1E36] text-[#C5A059] mb-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#060C18] text-[#C5A059] mb-3">
                     <Sparkles className="h-5 w-5" />
                   </div>
-                  <h4 className="font-heading text-sm font-bold text-[#0F1E36] mb-1">
+                  <h4 className="font-heading text-sm font-bold text-[#060C18] mb-1">
                     Rental Challenges
                   </h4>
                   <p className="text-xs text-slate-600 leading-relaxed">
@@ -443,10 +431,10 @@ export default function HomePage() {
                 </div>
 
                 <div className="rounded-2xl border border-slate-200 bg-slate-50/70 p-5 hover:border-[#C5A059]/50 hover:bg-white hover:shadow-md transition-all">
-                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#0F1E36] text-[#C5A059] mb-3">
+                  <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#060C18] text-[#C5A059] mb-3">
                     <CheckCircle className="h-5 w-5" />
                   </div>
-                  <h4 className="font-heading text-sm font-bold text-[#0F1E36] mb-1">
+                  <h4 className="font-heading text-sm font-bold text-[#060C18] mb-1">
                     Re-Rental Support
                   </h4>
                   <p className="text-xs text-slate-600 leading-relaxed">
@@ -460,7 +448,7 @@ export default function HomePage() {
       </section>
 
       {/* 6. Owner Callout Section */}
-      <section className="bg-gradient-to-r from-[#0F1E36] to-[#1A2F50] text-white py-16">
+      <section className="bg-gradient-to-r from-[#060C18] to-[#0D182E] text-white py-16">
         <div className="mx-auto max-w-7xl px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-10 items-center">
             <div>
@@ -499,7 +487,7 @@ export default function HomePage() {
                   <Button
                     variant="outline"
                     size="lg"
-                    className="border-slate-200 bg-white text-[#0F1E36] hover:bg-slate-100 hover:text-[#0F1E36] hover:border-slate-300 font-semibold shadow-sm transition-colors duration-200"
+                    className="border-slate-200 bg-white text-[#060C18] hover:bg-slate-100 hover:text-[#060C18] hover:border-slate-300 font-semibold shadow-sm transition-colors duration-200"
                   >
                     Explore Owner Plans
                   </Button>
@@ -547,7 +535,7 @@ export default function HomePage() {
       </section>
 
       {/* 7. Brand Statement Section (New - Before Footer) */}
-      <section className="bg-gradient-to-b from-[#142644] to-[#0F1E36] text-white py-16 sm:py-24 border-t border-slate-800 text-center relative overflow-hidden">
+      <section className="bg-gradient-to-b from-[#0A1528] to-[#060C18] text-white py-16 sm:py-24 border-t border-slate-800 text-center relative overflow-hidden">
         <div className="absolute inset-0 bg-[radial-gradient(#C5A059_1px,transparent_1px)] [background-size:24px_24px] opacity-10 pointer-events-none" />
         <div className="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
           <div className="inline-flex items-center gap-2 rounded-full border border-[#C5A059]/40 bg-[#C5A059]/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-[#C5A059] mb-6">

@@ -36,11 +36,11 @@ vi.mock("@/components/property/property-grid", () => ({
 }));
 
 describe("Homepage Hero Redesign & New Service Sections", () => {
-  it("renders the redesigned Hero section with eyebrow, two-tone heading, and description", () => {
+  it("renders the redesigned Hero section with two-tone heading, description, and verifies eyebrow is removed", () => {
     render(<HomePage />);
 
-    // Eyebrow
-    expect(screen.getByText(/THE SMARTER WAY TO RENT IN PUNE/i)).toBeInTheDocument();
+    // Eyebrow removed as requested
+    expect(screen.queryByText(/THE SMARTER WAY TO RENT IN PUNE/i)).not.toBeInTheDocument();
 
     // Two-tone heading
     expect(screen.getByText(/You Find the Home\./i)).toBeInTheDocument();
@@ -54,7 +54,7 @@ describe("Homepage Hero Redesign & New Service Sections", () => {
     ).toBeInTheDocument();
   });
 
-  it("renders the three Hero feature cards with descriptions", () => {
+  it("renders the three Hero feature cards with descriptions in compact format", () => {
     render(<HomePage />);
 
     expect(screen.getByText("Verified Owners")).toBeInTheDocument();

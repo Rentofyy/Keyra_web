@@ -47,7 +47,7 @@ describe("Homepage CTA Button Text Visibility", () => {
     expect(exploreButton).toBeVisible();
 
     // Verify button has dark navy text color token for high contrast against white background
-    expect(exploreButton.className).toContain("text-[#0F1E36]");
+    expect(exploreButton.className).toContain("text-[#060C18]");
     expect(exploreButton.className).toContain("bg-white");
     expect(exploreButton.className).toContain("border-slate-200");
 

@@ -155,11 +155,11 @@ function ResidentialPropertiesView({
       {/* 1. Top Bar: Locality Pills & Search Bar */}
       <div className="flex flex-col md:flex-row items-stretch md:items-center justify-between gap-4 mb-6">
         <div>
-          <h1 className="font-heading text-2xl sm:text-3xl font-extrabold text-[#0F1E36]">
+          <h1 className="font-heading text-2xl sm:text-3xl font-extrabold text-[#060C18]">
             Properties for Rent in Pune West
           </h1>
           <p className="text-xs sm:text-sm text-slate-500 mt-1">
-            Showing <span className="font-bold text-[#0F1E36]">{totalCount}</span> verified homes with 0% brokerage
+            Showing <span className="font-bold text-[#060C18]">{totalCount}</span> verified homes with 0% brokerage
           </p>
         </div>
 
@@ -201,7 +201,7 @@ function ResidentialPropertiesView({
           onClick={() => setLocality("")}
           className={`shrink-0 rounded-full px-4 py-1.5 text-xs font-semibold transition-colors ${
             !locality
-              ? "bg-[#0F1E36] text-white"
+              ? "bg-[#060C18] text-white"
               : "bg-white border border-slate-200 text-slate-700 hover:bg-slate-50"
           }`}
         >
@@ -213,7 +213,7 @@ function ResidentialPropertiesView({
             onClick={() => setLocality(loc)}
             className={`shrink-0 rounded-full px-4 py-1.5 text-xs font-semibold transition-colors ${
               locality === loc
-                ? "bg-[#0F1E36] text-white"
+                ? "bg-[#060C18] text-white"
                 : "bg-white border border-slate-200 text-slate-700 hover:bg-slate-50"
             }`}
           >
