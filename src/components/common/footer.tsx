@@ -60,14 +60,11 @@ export function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-5 gap-8">
           {/* Brand Info */}
           <div className="md:col-span-2 space-y-4">
-            <KeyraLogo height={42} className="h-10 w-auto" />
+            <KeyraLogo height={42} mode="dark" className="h-10 w-auto" />
             <p className="text-sm text-slate-400 leading-relaxed max-w-sm">
               KEYRA is Pune&apos;s premier managed real estate rental marketplace. We replace broker harassment with verified homes, scheduled physical visits, and digital rental agreements.
             </p>
             <div className="pt-2 text-xs text-slate-400 space-y-1">
-              <p className="flex items-center gap-2">
-                <MapPin className="h-3.5 w-3.5 text-[#C5A059]" /> Balewadi High Street, Pune, MH 411045
-              </p>
               <p className="flex items-center gap-2">
                 <Mail className="h-3.5 w-3.5 text-[#C5A059]" /> support@keyra.in
               </p>

@@ -533,24 +533,6 @@ export default function HomePage() {
           </div>
         </div>
       </section>
-
-      {/* 7. Brand Statement Section (New - Before Footer) */}
-      <section className="bg-gradient-to-b from-[#0A1528] to-[#060C18] text-white py-16 sm:py-24 border-t border-slate-800 text-center relative overflow-hidden">
-        <div className="absolute inset-0 bg-[radial-gradient(#C5A059_1px,transparent_1px)] [background-size:24px_24px] opacity-10 pointer-events-none" />
-        <div className="relative mx-auto max-w-5xl px-4 sm:px-6 lg:px-8">
-          <div className="inline-flex items-center gap-2 rounded-full border border-[#C5A059]/40 bg-[#C5A059]/10 px-4 py-1.5 text-xs font-bold uppercase tracking-wider text-[#C5A059] mb-6">
-            <Sparkles className="h-3.5 w-3.5 text-[#C5A059]" />
-            <span>THE KEYRA STANDARD</span>
-          </div>
-
-          <blockquote className="font-heading text-2xl sm:text-4xl md:text-5xl font-extrabold tracking-tight leading-snug sm:leading-tight">
-            <span className="text-slate-200 block">Other Platforms Share Contacts.</span>
-            <span className="text-[#C5A059] block mt-2 sm:mt-3">KEYRA Takes Responsibility.</span>
-          </blockquote>
-
-          <div className="mt-8 mx-auto w-24 h-1 bg-gradient-to-r from-transparent via-[#C5A059] to-transparent rounded-full" />
-        </div>
-      </section>
     </div>
   );
 }

@@ -119,10 +119,10 @@ describe("Homepage Hero Redesign & New Service Sections", () => {
     ).toBeInTheDocument();
   });
 
-  it("renders the full-width Brand Statement Section before footer", () => {
+  it("does not render the legacy Brand Statement Section on homepage", () => {
     render(<HomePage />);
 
-    expect(screen.getByText(/Other Platforms Share Contacts\./i)).toBeInTheDocument();
-    expect(screen.getByText(/KEYRA Takes Responsibility\./i)).toBeInTheDocument();
+    expect(screen.queryByText(/Other Platforms Share Contacts\./i)).toBeNull();
+    expect(screen.queryByText(/THE KEYRA STANDARD/i)).toBeNull();
   });
 });

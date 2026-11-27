@@ -4,6 +4,7 @@ import Link from "next/link";
 interface KeyraLogoProps {
   className?: string;
   variant?: "tight" | "full" | "raw";
+  mode?: "light" | "dark";
   height?: number;
   width?: number;
   priority?: boolean;
@@ -13,18 +14,19 @@ interface KeyraLogoProps {
 export function KeyraLogo({
   className = "",
   variant = "tight",
+  mode = "light",
   height = 40,
   width,
   priority = false,
   href = "/",
 }: KeyraLogoProps) {
-  // Official brand logo (luxury gold & platinum emblem on midnight navy)
-  let src = "/images/keyra-logo.png";
-  let aspectRatio = 824 / 320;
+  // Official seamless brand logo (pure transparent background, zero cutout)
+  let src = mode === "dark" ? "/images/keyra-logo-dark.png" : "/images/keyra-logo.png";
+  let aspectRatio = 791 / 306;
 
   if (variant === "full") {
-    src = "/images/keyra-logo-full.png";
-    aspectRatio = 1024 / 512;
+    src = mode === "dark" ? "/images/keyra-logo-dark.png" : "/images/keyra-logo-full.png";
+    aspectRatio = 791 / 306;
   } else if (variant === "raw") {
     src = "/images/keyra-logo-provided.jpg";
     aspectRatio = 1024 / 512;
@@ -33,7 +35,7 @@ export function KeyraLogo({
   const computedWidth = width || Math.round(height * aspectRatio);
 
   const imageElement = (
-    <div className={`relative inline-flex items-center shrink-0 overflow-hidden rounded-xl shadow-xs ${className}`}>
+    <div className={`relative inline-flex items-center shrink-0 ${className}`}>
       <Image
         src={src}
         alt="KEYRA - New Era of Finding Homes"
