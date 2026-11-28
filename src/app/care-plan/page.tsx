@@ -549,6 +549,89 @@ export default function CarePlanPage() {
         </div>
       </section>
 
+      {/* Payment Methods & Fee Transparency Disclosure (Razorpay Merchant Compliance) */}
+      <section className="py-16 bg-white border-t border-slate-200">
+        <div className="mx-auto max-w-5xl px-4 sm:px-6 lg:px-8 space-y-8">
+          <div className="text-center space-y-2 max-w-2xl mx-auto">
+            <span className="text-[11px] font-extrabold uppercase tracking-wider text-[#006A61] bg-[#E6F5F3] px-3 py-1 rounded-full">
+              Payment &amp; Fee Transparency
+            </span>
+            <h2 className="font-heading text-2xl sm:text-3xl font-black text-[#060C18]">
+              Why We Charge &amp; Accepted Payment Methods
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-500">
+              Clear breakdown of platform service charges. Zero rent collection or brokerage transactions.
+            </p>
+          </div>
+
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+            {/* Left: What We Charge For */}
+            <div className="rounded-3xl border border-slate-200 bg-slate-50/60 p-6 sm:p-7 space-y-4">
+              <h3 className="font-heading text-base font-bold text-[#060C18] flex items-center gap-2">
+                <ShieldCheck className="h-5 w-5 text-[#C5A059]" /> Nominal Platform Service Fees
+              </h3>
+              <p className="text-xs text-slate-600 leading-relaxed">
+                KEYRA Technologies Pvt. Ltd. provides digital workflow software and on-site property concierge services in Pune. Our fees cover legitimate field operations and verified digital listing hosting:
+              </p>
+              <ul className="text-xs text-slate-700 space-y-2.5">
+                <li className="flex items-start gap-2">
+                  <span className="font-bold text-[#060C18] shrink-0">• ₹39 Visit Coordination:</span>
+                  <span>Covers our field executive accompanying a prospective tenant for a guided walkthrough and filtering casual inquiries.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="font-bold text-[#060C18] shrink-0">• ₹99 / ₹2,999 Listing Packages:</span>
+                  <span>One-time SaaS listing enhancements, HD videography, carpet area audits, and dedicated relationship manager support.</span>
+                </li>
+                <li className="flex items-start gap-2">
+                  <span className="font-bold text-[#060C18] shrink-0">• ₹9,999 Deal Concierge:</span>
+                  <span>Legal rental agreement drafting on stamp paper and physical move-in condition audits.</span>
+                </li>
+              </ul>
+              <div className="rounded-xl border border-emerald-200 bg-emerald-50/80 p-3 text-[11.5px] text-emerald-800 font-medium">
+                <strong>Zero Rent &amp; Zero Brokerage:</strong> KEYRA never collects property rent, security deposits, or brokerage fees through Razorpay. All rental payments occur directly between landlords and tenants.
+              </div>
+            </div>
+
+            {/* Right: Accepted Payment Methods */}
+            <div className="rounded-3xl border border-slate-200 bg-slate-50/60 p-6 sm:p-7 space-y-4 flex flex-col justify-between">
+              <div className="space-y-4">
+                <h3 className="font-heading text-base font-bold text-[#060C18] flex items-center gap-2">
+                  <Zap className="h-5 w-5 text-emerald-600" /> Secure Payment Methods
+                </h3>
+                <p className="text-xs text-slate-600 leading-relaxed">
+                  All transactions are processed through Razorpay Payment Gateway with end-to-end 256-bit SSL encryption. We accept:
+                </p>
+                <div className="grid grid-cols-2 gap-3 text-xs">
+                  <div className="rounded-xl bg-white p-3 border border-slate-200 space-y-1">
+                    <span className="font-bold text-[#060C18] block">UPI Payments</span>
+                    <span className="text-[11px] text-slate-500">Google Pay, PhonePe, Paytm, BHIM &amp; Cred</span>
+                  </div>
+                  <div className="rounded-xl bg-white p-3 border border-slate-200 space-y-1">
+                    <span className="font-bold text-[#060C18] block">Cards</span>
+                    <span className="text-[11px] text-slate-500">Visa, MasterCard, RuPay &amp; Diners Club</span>
+                  </div>
+                  <div className="rounded-xl bg-white p-3 border border-slate-200 space-y-1">
+                    <span className="font-bold text-[#060C18] block">Net Banking</span>
+                    <span className="text-[11px] text-slate-500">50+ Indian banks including HDFC, ICICI, SBI</span>
+                  </div>
+                  <div className="rounded-xl bg-white p-3 border border-slate-200 space-y-1">
+                    <span className="font-bold text-[#060C18] block">Instant Invoicing</span>
+                    <span className="text-[11px] text-slate-500">GST compliant tax invoices for all purchases</span>
+                  </div>
+                </div>
+              </div>
+
+              <div className="pt-2 text-[11px] text-slate-500 border-t border-slate-200/80 flex items-center justify-between">
+                <span>Certified PCI-DSS Level 1 Compliant</span>
+                <Link href="/legal/delivery" className="font-bold text-[#C5A059] hover:underline">
+                  View Service Delivery Policy →
+                </Link>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* Frequently Asked Questions */}
       <section className="py-16 bg-white border-t border-slate-200">
         <div className="mx-auto max-w-4xl px-4 sm:px-6 lg:px-8 space-y-8">

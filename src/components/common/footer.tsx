@@ -143,11 +143,37 @@ export function Footer() {
                 </Link>
               </li>
               <li>
+                <Link href="/legal/delivery" className="hover:text-white transition-colors">
+                  Service Delivery Policy
+                </Link>
+              </li>
+              <li>
                 <Link href="/legal/fair-use" className="hover:text-white transition-colors">
                   Zero Brokerage Policy
                 </Link>
               </li>
+              <li>
+                <Link href="/contact" className="hover:text-white transition-colors">
+                  Contact Us
+                </Link>
+              </li>
             </ul>
+          </div>
+        </div>
+
+        {/* Payment Methods & Regulatory Trust Bar (Razorpay Merchant Compliance) */}
+        <div className="mt-10 border-t border-slate-800/80 pt-6">
+          <div className="flex flex-col md:flex-row items-center justify-between gap-4 text-xs text-slate-400">
+            <div className="flex flex-wrap items-center gap-2">
+              <span className="font-bold text-slate-300">Accepted Payment Methods:</span>
+              <span className="rounded bg-slate-800/90 px-2 py-0.5 text-[11px] text-slate-300">UPI (GPay / PhonePe / Paytm)</span>
+              <span className="rounded bg-slate-800/90 px-2 py-0.5 text-[11px] text-slate-300">Visa / MasterCard / RuPay</span>
+              <span className="rounded bg-slate-800/90 px-2 py-0.5 text-[11px] text-slate-300">Net Banking (50+ Banks)</span>
+              <span className="rounded bg-emerald-950/60 border border-emerald-500/30 px-2 py-0.5 text-[11px] text-emerald-400 font-semibold">🔒 Secured by Razorpay</span>
+            </div>
+            <p className="text-[11px] text-slate-400 text-center md:text-right max-w-md leading-relaxed">
+              KEYRA collects nominal platform SaaS software and on-site field verification service fees only. We do not process property rent, security deposits, or brokerage.
+            </p>
           </div>
         </div>
 

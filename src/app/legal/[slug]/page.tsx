@@ -98,6 +98,60 @@ const LEGAL_DOCS: Record<string, LegalContent> = {
       },
     ],
   },
+  delivery: {
+    title: "Service Delivery & Fulfillment Policy",
+    subtitle: "Timelines and fulfillment terms for digital listing activations, physical inspection dispatches, and concierge documentation.",
+    lastUpdated: "November 2026",
+    sections: [
+      {
+        heading: "1. Nature of Services Delivered",
+        body: "KEYRA Technologies Pvt. Ltd. provides digital SaaS software for rental property listing management and on-site field concierge services in Pune, Maharashtra. We do not sell or ship physical packaged goods requiring postal courier delivery. All services are fulfilled digitally through our platform and via scheduled on-site field visits.",
+      },
+      {
+        heading: "2. Digital Listing Package Activation (₹99 - ₹2,999)",
+        body: "Upon completing online payment via Razorpay, your property listing package is activated immediately. Once basic property address and photographic proof are verified by our operations desk (typically within 1 to 2 hours), your listing goes live across KEYRA's search discovery index and interactive map view.",
+      },
+      {
+        heading: "3. On-Site Physical Inspection & Videography",
+        body: "For KEYRA Care Complete (₹2,999) and verified listings, our Pune West field operations team schedules an in-person physical carpet-area inspection, electricity bill audit, and professional photography within 24 to 48 business hours of package purchase.",
+      },
+      {
+        heading: "4. Tenant Field Visit Accompaniment (₹39)",
+        body: "Assisted property visits booked by tenants are confirmed instantly via SMS/Email. A dedicated KEYRA field executive meets the tenant at the property location at the exact scheduled date and time slot.",
+      },
+      {
+        heading: "5. Rental Agreement & Biometric Concierge (₹9,999)",
+        body: "Legal lease drafting is initiated upon mutual confirmation between landlord and tenant. Digital drafts are delivered for review within 24 hours. Doorstep biometric e-registration with the government sub-registrar is scheduled at the parties' mutual convenience.",
+      },
+      {
+        heading: "6. Accepted Payment Methods & Security",
+        body: "Payments are accepted electronically via Razorpay Payment Gateway, supporting UPI (Google Pay, PhonePe, Paytm, BHIM, Cred), Credit Cards, Debit Cards (Visa, MasterCard, RuPay), and Net Banking across all major Indian banks. All transactions are protected by 256-bit SSL encryption.",
+      },
+      {
+        heading: "7. Service Queries & Delivery Disputes",
+        body: "For any questions regarding service fulfillment, scheduling, or delivery timelines, please contact our support team at support@keyra.in or call our Pune Operations Center at +91 9699720798.",
+      },
+    ],
+  },
+  fees: {
+    title: "Platform Pricing & Service Fee Policy",
+    subtitle: "Transparent disclosure of platform service charges and zero-brokerage operations.",
+    lastUpdated: "November 2026",
+    sections: [
+      {
+        heading: "1. Zero Rent & Zero Brokerage Commitment",
+        body: "KEYRA Technologies Pvt. Ltd. operates strictly as an IT software provider and property inspection concierge. KEYRA does NOT collect property rent, lease security deposits, or real estate brokerage through its payment gateway. All rental lease agreements and monthly rental transactions are concluded directly between property owners and tenants without gateway escrow or financial intermediation.",
+      },
+      {
+        heading: "2. Itemized Platform Service Fees",
+        body: "All fees processed through Razorpay represent nominal, fixed charges for digital software hosting, field executive accompaniment, and document drafting:\n• Field Visit Coordination Fee: ₹39 (operational fee for physical accompaniment and anti-spam protection).\n• KEYRA Smart Listing Package: ₹99 (one-time SaaS listing enhancement and high-definition photography).\n• KEYRA Care Complete Listing Package: ₹2,999 (one-time comprehensive concierge with dedicated relationship manager, carpet area audit, and videography).\n• Assisted Deal Closure Concierge: ₹9,999 (legal lease drafting on stamp paper and move-in inspection).",
+      },
+      {
+        heading: "3. Invoicing & Taxes",
+        body: "All service fees are inclusive of applicable Goods and Services Tax (GST). Digital tax invoices are generated and accessible from your user dashboard immediately upon transaction completion.",
+      },
+    ],
+  },
 };
 
 export default async function LegalPage({
