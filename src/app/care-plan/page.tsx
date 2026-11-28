@@ -571,7 +571,7 @@ export default function CarePlanPage() {
                 <ShieldCheck className="h-5 w-5 text-[#C5A059]" /> Nominal Platform Service Fees
               </h3>
               <p className="text-xs text-slate-600 leading-relaxed">
-                KEYRA Technologies Pvt. Ltd. provides digital workflow software and on-site property concierge services in Pune. Our fees cover legitimate field operations and verified digital listing hosting:
+                KEYRA (operated by Johnson Abraham, Individual Merchant) provides digital workflow software and on-site property concierge services in Pune. Our fees cover legitimate field operations and verified digital listing hosting:
               </p>
               <ul className="text-xs text-slate-700 space-y-2.5">
                 <li className="flex items-start gap-2">

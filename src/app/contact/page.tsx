@@ -47,14 +47,16 @@ export default function ContactPage() {
         <div className="space-y-6 lg:col-span-1">
           <div className="rounded-3xl border border-slate-200 bg-white p-6 shadow-sm space-y-5">
             <h3 className="font-heading text-lg font-bold text-[#0F1E36]">
-              Registered Office
+              Merchant &amp; Business Details
             </h3>
 
             <div className="space-y-4 text-xs text-slate-600">
               <div className="flex items-start gap-3">
                 <MapPin className="h-5 w-5 text-[#C5A059] shrink-0 mt-0.5" />
                 <div>
-                  <strong className="block text-slate-900 font-bold">KEYRA Technologies Pvt. Ltd.</strong>
+                  <strong className="block text-slate-900 font-bold">KEYRA</strong>
+                  <span className="text-slate-500 font-medium">Owner &amp; Individual Merchant: Johnson Abraham</span>
+                  <br />
                   <span>Balewadi High Street, Balewadi,</span>
                   <br />
                   <span>Pune, Maharashtra 411045, India</span>
@@ -65,12 +67,12 @@ export default function ContactPage() {
                 <Mail className="h-5 w-5 text-[#006A61] shrink-0 mt-0.5" />
                 <div>
                   <strong className="block text-slate-900 font-bold">Official Support Email</strong>
-                  <a href="mailto:support@keyra.in" className="text-[#006A61] hover:underline">
-                    support@keyra.in
+                  <a href="mailto:hellokeyra9@gmail.com" className="text-[#006A61] hover:underline font-semibold">
+                    hellokeyra9@gmail.com
                   </a>
                   <br />
-                  <a href="mailto:hellokeyra9@gmail.com" className="text-slate-500 hover:underline">
-                    hellokeyra9@gmail.com
+                  <a href="mailto:support@keyra.in" className="text-slate-500 hover:underline">
+                    support@keyra.in
                   </a>
                 </div>
               </div>
@@ -79,12 +81,12 @@ export default function ContactPage() {
                 <Phone className="h-5 w-5 text-[#C5A059] shrink-0 mt-0.5" />
                 <div>
                   <strong className="block text-slate-900 font-bold">Customer Helpline</strong>
-                  <a href="tel:+919699720798" className="text-slate-900 font-semibold hover:underline">
-                    +91 9699720798
+                  <a href="tel:+916350321785" className="text-slate-900 font-semibold hover:underline">
+                    +91 6350321785
                   </a>
                   <br />
-                  <a href="tel:+916350321785" className="text-slate-600 hover:underline">
-                    +91 6350321785
+                  <a href="tel:+919699720798" className="text-slate-600 hover:underline">
+                    +91 9699720798
                   </a>
                 </div>
               </div>
@@ -101,19 +103,24 @@ export default function ContactPage() {
             </div>
           </div>
 
-          {/* Grievance Redressal */}
+          {/* Grievance Redressal & Merchant Verification */}
           <div className="rounded-2xl border border-slate-200 bg-slate-50 p-5 space-y-2 text-xs">
             <h4 className="font-bold text-slate-900 flex items-center gap-1.5">
-              <ShieldCheck className="h-4 w-4 text-[#006A61]" /> Grievance Redressal Officer
+              <ShieldCheck className="h-4 w-4 text-[#006A61]" /> Merchant &amp; Grievance Redressal
             </h4>
             <p className="text-slate-600 leading-relaxed">
-              In accordance with Information Technology Act 2000 and rules made thereunder:
+              In accordance with Information Technology Act 2000 and Razorpay Merchant Guidelines:
             </p>
             <p className="text-slate-700">
-              <strong>Officer:</strong> Johnson Abraham<br />
-              <strong>Email:</strong>{" "}
-              <a href="mailto:grievance@keyra.in" className="text-[#006A61] hover:underline font-semibold">
-                grievance@keyra.in
+              <strong>Owner &amp; Merchant:</strong> Johnson Abraham (Individual)<br />
+              <strong>Trade / Brand Name:</strong> KEYRA<br />
+              <strong>Contact Email:</strong>{" "}
+              <a href="mailto:hellokeyra9@gmail.com" className="text-[#006A61] hover:underline font-semibold">
+                hellokeyra9@gmail.com
+              </a>{" "}
+              /{" "}
+              <a href="mailto:support@keyra.in" className="text-[#006A61] hover:underline font-semibold">
+                support@keyra.in
               </a>
             </p>
           </div>

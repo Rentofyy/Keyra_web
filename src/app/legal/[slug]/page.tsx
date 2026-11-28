@@ -17,7 +17,7 @@ const LEGAL_DOCS: Record<string, LegalContent> = {
     sections: [
       {
         heading: "1. Acceptance of Terms",
-        body: "By accessing or using the KEYRA platform (website, mobile applications, and physical concierge services), you agree to be bound by these Terms of Service. KEYRA is operated by KEYRA Technologies Pvt. Ltd., headquartered in Pune, Maharashtra.",
+        body: "By accessing or using the KEYRA platform (website, mobile applications, and physical concierge services), you agree to be bound by these Terms of Service. KEYRA is owned and operated by Johnson Abraham (Individual Merchant), operating under the trade name KEYRA in Pune, Maharashtra.",
       },
       {
         heading: "2. Zero Brokerage Guarantee",
@@ -105,7 +105,7 @@ const LEGAL_DOCS: Record<string, LegalContent> = {
     sections: [
       {
         heading: "1. Nature of Services Delivered",
-        body: "KEYRA Technologies Pvt. Ltd. provides digital SaaS software for rental property listing management and on-site field concierge services in Pune, Maharashtra. We do not sell or ship physical packaged goods requiring postal courier delivery. All services are fulfilled digitally through our platform and via scheduled on-site field visits.",
+        body: "KEYRA (operated by Johnson Abraham, Individual Merchant) provides digital SaaS software for rental property listing management and on-site field concierge services in Pune, Maharashtra. We do not sell or ship physical packaged goods requiring postal courier delivery. All services are fulfilled digitally through our platform and via scheduled on-site field visits.",
       },
       {
         heading: "2. Digital Listing Package Activation (₹99 - ₹2,999)",
@@ -140,7 +140,7 @@ const LEGAL_DOCS: Record<string, LegalContent> = {
     sections: [
       {
         heading: "1. Zero Rent & Zero Brokerage Commitment",
-        body: "KEYRA Technologies Pvt. Ltd. operates strictly as an IT software provider and property inspection concierge. KEYRA does NOT collect property rent, lease security deposits, or real estate brokerage through its payment gateway. All rental lease agreements and monthly rental transactions are concluded directly between property owners and tenants without gateway escrow or financial intermediation.",
+        body: "KEYRA (operated by Johnson Abraham, Individual Merchant) operates strictly as an IT software provider and property inspection concierge. KEYRA does NOT collect property rent, lease security deposits, or real estate brokerage through its payment gateway. All rental lease agreements and monthly rental transactions are concluded directly between property owners and tenants without gateway escrow or financial intermediation.",
       },
       {
         heading: "2. Itemized Platform Service Fees",
@@ -203,11 +203,15 @@ export default async function LegalPage({
       <div className="rounded-2xl border border-[#006A61]/20 bg-[#E6F5F3]/50 p-6 flex items-start gap-3.5">
         <ShieldCheck className="h-6 w-6 text-[#006A61] shrink-0 mt-0.5" />
         <div className="text-xs text-[#006A61] leading-relaxed">
-          <strong>Questions or Legal Inquiries?</strong> Contact our legal team at{" "}
-          <a href="mailto:legal@keyra.in" className="underline font-bold">
-            legal@keyra.in
+          <strong>Questions or Legal Inquiries?</strong> Contact Johnson Abraham (KEYRA) at{" "}
+          <a href="mailto:hellokeyra9@gmail.com" className="underline font-bold">
+            hellokeyra9@gmail.com
           </a>{" "}
-          or visit KEYRA Technologies Pvt. Ltd., Balewadi High Street, Pune, Maharashtra 411045.
+          or{" "}
+          <a href="mailto:support@keyra.in" className="underline font-bold">
+            support@keyra.in
+          </a>
+          , Balewadi High Street, Pune, Maharashtra 411045.
         </div>
       </div>
     </div>

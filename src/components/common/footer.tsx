@@ -172,14 +172,14 @@ export function Footer() {
               <span className="rounded bg-emerald-950/60 border border-emerald-500/30 px-2 py-0.5 text-[11px] text-emerald-400 font-semibold">🔒 Secured by Razorpay</span>
             </div>
             <p className="text-[11px] text-slate-400 text-center md:text-right max-w-md leading-relaxed">
-              KEYRA collects nominal platform SaaS software and on-site field verification service fees only. We do not process property rent, security deposits, or brokerage.
+              KEYRA (Merchant: Johnson Abraham) collects nominal platform SaaS software and on-site field verification service fees only. We do not process property rent, security deposits, or brokerage.
             </p>
           </div>
         </div>
 
         {/* Bottom Copyright */}
         <div className="mt-12 border-t border-slate-800 pt-6 flex flex-col sm:flex-row items-center justify-between text-xs text-slate-500">
-          <p>© {new Date().getFullYear()} KEYRA Technologies Pvt. Ltd. All rights reserved.</p>
+          <p>© {new Date().getFullYear()} KEYRA. All rights reserved. (Operated by Johnson Abraham, Individual Merchant)</p>
           <p className="mt-2 sm:mt-0">Pune, Maharashtra, India</p>
         </div>
       </div>
