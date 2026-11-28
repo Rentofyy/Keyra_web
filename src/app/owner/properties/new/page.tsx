@@ -3,6 +3,7 @@
 import { useState } from "react";
 import { useRouter } from "next/navigation";
 import Link from "next/link";
+import { useQuery } from "@tanstack/react-query";
 import { useAuthStore } from "@/stores/auth-store";
 import { apiClient } from "@/lib/api-client";
 import { PUNE_WEST_LOCALITIES } from "@/lib/constants";
@@ -117,6 +118,26 @@ const CANONICAL_PLANS: PlanDefinition[] = [
 export default function NewPropertyWizardPage() {
   const router = useRouter();
   const { isAuthenticated, openAuthModal, user } = useAuthStore();
+
+  // Fetch owner wallet balance for eligible discounts
+  const { data: walletData } = useQuery<{
+    walletBalance?: number;
+    balance?: number;
+  }>({
+    queryKey: ["owner-wallet"],
+    queryFn: async () => {
+      try {
+        const res = await apiClient.get<any>("/wallet");
+        return res.data;
+      } catch {
+        return { walletBalance: 0, balance: 0 };
+      }
+    },
+    enabled: isAuthenticated,
+  });
+
+  const walletCashBalance =
+    walletData?.walletBalance ?? walletData?.balance ?? 0;
 
   // Wizard Navigation: Step 0 is Choose Listing Plan (matching mobile app)
   const [step, setStep] = useState<number>(0);
@@ -306,12 +327,12 @@ export default function NewPropertyWizardPage() {
           return;
         }
 
-        // Initiate checkout from backend
+        // Initiate checkout from backend with wallet discount if applicable
         let checkoutData: any = null;
         try {
           const checkoutRes = await apiClient.post<any>(
             `/owner/properties/${newId}/subscriptions/checkout`,
-            { planCode: planToConfirm.code }
+            { planCode: planToConfirm.code, useWallet: true }
           );
           checkoutData = checkoutRes.data;
         } catch (checkoutErr: any) {
@@ -322,7 +343,7 @@ export default function NewPropertyWizardPage() {
           try {
             const fallbackRes = await apiClient.post<any>(
               "/owner/subscriptions/checkout",
-              { planCode: planToConfirm.code }
+              { planCode: planToConfirm.code, useWallet: true }
             );
             checkoutData = fallbackRes.data;
           } catch (fbErr) {
@@ -387,8 +408,9 @@ export default function NewPropertyWizardPage() {
           modal: {
             ondismiss: () => {
               setIsConfirmModalOpen(false);
+              const remainingWallet = walletCashBalance > 0 ? walletCashBalance : 500;
               setDismissedPaymentWarning(
-                `Payment was not completed. Your property has been saved under KEYRA FREE. You can upgrade to ${planToConfirm.name} anytime from your Owner Dashboard.`
+                `Payment was not completed. Your property has been saved under KEYRA FREE. Your ₹${remainingWallet} KEYRA Wallet Cash remains safe in your account. You can upgrade to ${planToConfirm.name} anytime from your Owner Dashboard.`
               );
               setActivePaidPlan(CANONICAL_PLANS[0]);
               setStep(5);
@@ -631,7 +653,7 @@ export default function NewPropertyWizardPage() {
                         </div>
 
                         {/* Pricing */}
-                        <div className="mt-1 flex items-baseline gap-2">
+                        <div className="mt-1 flex flex-wrap items-baseline gap-2">
                           {plan.originalPrice && (
                             <span className="text-xs font-semibold text-slate-400 line-through">
                               ₹{plan.originalPrice.toLocaleString("en-IN")}
@@ -648,16 +670,22 @@ export default function NewPropertyWizardPage() {
                           >
                             {plan.price === 0
                               ? "Free"
+                              : isCare && walletCashBalance > 0
+                              ? `₹${(plan.price - Math.min(walletCashBalance, 500)).toLocaleString("en-IN")}`
                               : `₹${plan.price.toLocaleString("en-IN")}`}
                           </span>
                           <span className="text-xs text-slate-500">
                             / {plan.billingPeriod}
                           </span>
-                          {plan.discountBadge && (
+                          {isCare && walletCashBalance > 0 ? (
+                            <span className="rounded-full bg-amber-100 border border-amber-300 px-2 py-0.5 text-[10px] font-extrabold text-amber-800">
+                              ₹{Math.min(walletCashBalance, 500)} WALLET CASH APPLIED
+                            </span>
+                          ) : plan.discountBadge ? (
                             <span className="rounded-full bg-emerald-50 border border-emerald-200 px-2 py-0.5 text-[10px] font-bold text-emerald-700">
                               {plan.discountBadge}
                             </span>
-                          )}
+                          ) : null}
                         </div>
 
                         {/* Summary Bullets */}
@@ -727,7 +755,9 @@ export default function NewPropertyWizardPage() {
               <Zap className="h-4 w-4" />
               <span>
                 Continue to Fill Details (
-                {selectedPlan.price === 0
+                {selectedPlan.code === "OWNER_CARE" && walletCashBalance > 0
+                  ? `₹${(selectedPlan.price - Math.min(walletCashBalance, 500)).toLocaleString("en-IN")}`
+                  : selectedPlan.price === 0
                   ? "Free"
                   : `₹${selectedPlan.price.toLocaleString("en-IN")}`}
                 )
@@ -1359,6 +1389,27 @@ export default function NewPropertyWizardPage() {
               })}
             </div>
 
+            {/* Wallet Discount Breakdown for Care Plan */}
+            {tempModalPlan.code === "OWNER_CARE" && walletCashBalance > 0 && (
+              <div className="mx-6 mb-3 rounded-2xl bg-amber-50/70 border border-amber-200/80 p-3.5 text-xs space-y-1.5 text-slate-800">
+                <div className="flex justify-between items-center text-slate-500">
+                  <span>Regular Listing Price</span>
+                  <span className="line-through">₹2,999</span>
+                </div>
+                <div className="flex justify-between items-center font-bold text-[#B45309]">
+                  <span className="flex items-center gap-1.5">
+                    <Sparkles className="h-3.5 w-3.5 text-[#C5A059]" />
+                    KEYRA Wallet Cash Discount
+                  </span>
+                  <span>-₹{Math.min(walletCashBalance, 500)}</span>
+                </div>
+                <div className="border-t border-amber-200 pt-1.5 flex justify-between items-center font-extrabold text-[#060C18]">
+                  <span>Amount to Pay</span>
+                  <span className="text-sm font-black text-[#C5A059]">₹{(2999 - Math.min(walletCashBalance, 500)).toLocaleString("en-IN")}</span>
+                </div>
+              </div>
+            )}
+
             {/* Modal Footer with Action Buttons */}
             <div className="p-6 border-t border-slate-100 bg-slate-50/50 space-y-2">
               <button
@@ -1387,7 +1438,11 @@ export default function NewPropertyWizardPage() {
                   <>
                     <Lock className="h-4 w-4" />
                     <span>
-                      Pay ₹{tempModalPlan.price.toLocaleString("en-IN")} with Razorpay
+                      Pay ₹{(tempModalPlan.code === "OWNER_CARE" && walletCashBalance > 0
+                        ? tempModalPlan.price - Math.min(walletCashBalance, 500)
+                        : tempModalPlan.price
+                      ).toLocaleString("en-IN")} with Razorpay
+                      {tempModalPlan.code === "OWNER_CARE" && walletCashBalance > 0 ? " (₹500 Wallet Cash Applied)" : ""}
                     </span>
                   </>
                 )}

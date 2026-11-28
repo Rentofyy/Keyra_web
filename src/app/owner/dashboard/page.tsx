@@ -45,18 +45,25 @@ export default function OwnerDashboardPage() {
   });
 
   // Fetch wallet for owner rewards
-  const { data: walletData } = useQuery<{ balance: number; referralEarnings?: number }>({
+  const { data: walletData } = useQuery<{
+    walletBalance?: number;
+    balance?: number;
+    referralEarnings?: number;
+  }>({
     queryKey: ["owner-wallet"],
     queryFn: async () => {
       try {
         const res = await apiClient.get<any>("/wallet");
         return res.data;
       } catch {
-        return { balance: 0 };
+        return { walletBalance: 0, balance: 0 };
       }
     },
     enabled: isAuthenticated,
   });
+
+  const walletCashBalance =
+    walletData?.walletBalance ?? walletData?.balance ?? 0;
 
   const properties: PropertySummary[] = (propertyPage?.content || []).map((p) =>
     normalizeProperty(p)
@@ -178,16 +185,19 @@ export default function OwnerDashboardPage() {
           </p>
         </div>
 
-        <div className="rounded-2xl border border-purple-200 bg-purple-50/50 p-5 shadow-card flex items-center justify-between">
+        <div className="rounded-2xl border border-[#C5A059]/30 bg-gradient-to-br from-[#060C18] to-[#0A1224] p-5 shadow-card flex items-center justify-between text-white">
           <div>
-            <span className="text-xs font-bold uppercase tracking-wider text-purple-700">
-              Cashback Balance
+            <span className="text-[10px] font-bold uppercase tracking-wider text-[#C5A059]">
+              KEYRA Wallet Cash
             </span>
-            <p className="font-heading text-2xl font-extrabold text-purple-950 mt-1">
-              ₹{walletData?.balance || 0}
+            <p className="font-heading text-2xl font-extrabold text-[#C5A059] mt-1">
+              ₹{walletCashBalance}
+            </p>
+            <p className="text-[11px] text-slate-300 mt-0.5">
+              Usable on Care (₹2,999 - ₹500) &amp; Deal Closure (₹9,999 - ₹500)
             </p>
           </div>
-          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-purple-100 text-purple-700">
+          <div className="flex h-10 w-10 items-center justify-center rounded-xl bg-[#C5A059]/20 text-[#C5A059]">
             <Wallet className="h-5 w-5" />
           </div>
         </div>
